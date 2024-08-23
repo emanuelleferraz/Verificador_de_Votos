@@ -9,7 +9,7 @@ db = client.db('informations_Deputados_and_Projetos', username='root', password=
 # Selecionar a coleção
 collection = db.collection('projetos')
 
-def insertLaw(name, description, number): #coloquei nome e party so pra criar a function
+def insertLaw(name, description, number): 
     document = {
     "lawNumber": number,
     "nome": name,
