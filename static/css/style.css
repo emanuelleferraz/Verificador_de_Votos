@@ -40,6 +40,7 @@ html {
 }
 
 body {
+     background-color: #006400;
      color: #666666;
      font-size: 14px;
      font-family: 'Poppins', sans-serif;
@@ -411,7 +412,6 @@ ul.infomaco li a {
 
 /** end header **/
 
-
 /** banner section **/
 
 .full_bg {
@@ -544,7 +544,6 @@ ul.infomaco li a {
 
 
 /** end banner section **/
-
 
 /** about section **/
 
