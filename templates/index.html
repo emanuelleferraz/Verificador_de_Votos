@@ -1,16 +1,382 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/teste.css') }}">
-    
-</head>
-<body>
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>VerificaBR</title>
+      <link rel="icon" href="{{ url_for('static', filename='images/logotipo.png') }}">
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+      <!-- style css -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+      <!-- fevicon -->
+      <link rel="icon" href="{{ url_for('static', filename='images/fevicon.png') }}" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.mCustomScrollbar.min.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+        <div class="loader">
+            <img src="{{ url_for('static', filename='images/loading.gif') }}" alt="Carregando...">
+        </div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <div class="header">
+         <div class="container-fluid">
+            <div class="row d_flex">
+               <div class="col-xl-1 col-lg-3 col-sm-2 col logo_section">
+                  <div class="full">
+                     <div class="center-desk">
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-7 col-lg-9 col-md-10 col-sm-12">
+                  <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarsExample04">
+                        <div class="logo">
+                           <a href="index.html"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
+                        </div>
+                        <ul class="navbar-nav mr-auto">
+                           <li class="nav-item active">
+                              <a class="nav-link" href="index.html">Início</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="about.html">Sobre</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="service.html">Projetos de Leis</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="testimonial.html">Deputados</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="blog.html">Conexões</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" style="background: transparent;" href="Javascript:void(0)"><i class="fa fa-search"></i></a>
+                           </li>
+                        </ul>
+                     </div>
+                  </nav>
+               </div>
+               <div class="col-md-4 re_no">
+                  <ul class="infomaco">
+                     <li class="telefone"><i class="fa fa-phone" aria-hidden="true"></i> +01 1234567890</li>
+                     <button id="login-button" class="btn btn-primary login" data-animation="animated bounceInLeft">Login</button>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end header inner -->
+      <!-- end header -->
+      <!-- top -->
+      <div class="full_bg">
+         <div class="slider_main">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-md-12">
+                     <!-- carousel code -->
+                     <div id="carouselExampleIndicators" class="carousel slide">
+                        <ol class="carousel-indicators">
+                           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                           <!-- first slide -->
+                           <div class="carousel-item active">
+                              <div class="carousel-caption relative">
+                                 <div class="row d_flex">
+                                    <div class="col-md-5">
+                                       <div class="zon_text">
+                                          <h1 data-animation="animated bounceInLeft">
+                                             Verifique<br>
+                                             Votos
+                                          </h1>
+                                          <p data-animation="animated bounceInLeft">
+                                             There are many variations of passages of Loremalteration in some form, by injected humour, or randomised 
+                                          </p>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Read More</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Get A Quote</button>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                       <div class="coff_img">
+                                        <figure>
+                                            <img src="{{ url_for('static', filename='images/deputados.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos.">
+                                        </figure>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- second slide -->
+                           <div class="carousel-item">
+                              <div class="carousel-caption relative">
+                                 <div class="row d_flex">
+                                    <div class="col-md-5">
+                                       <div class="zon_text">
+                                          <h1 data-animation="animated bounceInLeft">
+                                             Crie<br>
+                                             Conexões
+                                          </h1>
+                                          <p data-animation="animated bounceInLeft">
+                                             There are many variations of passages of Loremalteration in some form, by injected humour, or randomised 
+                                          </p>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Read More</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Get A Quote</button>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                       <div class="coff_img">
+                                        <figure>
+                                            <img src="{{ url_for('static', filename='images/deputados.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos.">
+                                        </figure>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- third slide-->
+                           <div class="carousel-item">
+                              <div class="carousel-caption relative">
+                                 <div class="row d_flex">
+                                    <div class="col-md-5">
+                                       <div class="zon_text">
+                                          <h1 data-animation="animated bounceInLeft">
+                                             Veja<br>
+                                             Leis
+                                          </h1>
+                                          <p data-animation="animated bounceInLeft">
+                                             There are many variations of passages of Loremalteration in some form, by injected humour, or randomised 
+                                          </p>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Read More</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Get A Quote</button>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                       <div class="coff_img">
+                                        <figure>
+                                            <img src="{{ url_for('static', filename='images/deputados.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos.">
+                                        </figure>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- controls -->
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end banner -->
+      <!-- about -->
+      <div class="about">
+         <div class="container">
+            <div class="row d_flex grid">
+               <div class="col-md-6">
+                  <div class="about_img text_align_center">
+                    <figure>
+                        <img src="{{ url_for('static', filename='images/about.jpeg') }}" alt="#">
+                    </figure>
+                  </div>
+               </div>
+               <div class="col-md-6 order1">
+                  <div class="titlepage text_align_left">
+                     <h2>Sobre o VerificaBR</h2>
+                     <p>sing 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors  
+                     </p>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ullamcorper bibendum turpis ac lobortis. Integer malesuada ullamcorper tristique. Suspendisse sed mollis lectus, eu sollicitudin risus. Sed neque eros, accumsan fringilla tincidunt eget, interdum a erat. Suspendisse faucibus vestibulum dolor vitae pellentesque. Nullam ac enim sodales, posuere quam in, feugiat magna. Pellentesque vel varius tellus. Vestibulum tempor purus a magna viverra, in tincidunt lectus laoreet. Donec egestas dictum molestie. Aliquam tempus eget odio dictum condimentum. Proin pretium ut metus sed feugiat. Nunc convallis diam vitae blandit euismod. Quisque consequat tincidunt augue, a vehicula diam luctus in.
+                     </p>
+                     <p></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end about -->
+      <!-- service -->
+      <div class="service">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage text_align_center">
+                     <h2>Serviços</h2>
+                     <p>sing 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors 
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <!--  Demos -->
+                  <div class="owl-carousel owl-theme">
+                     <div class="item">
+                        <div class="service_box text_align_center">
+                           <div class="ser_img">
+                              <figure><img src="images/" alt="Serviço 1 do Software"/></figure>
+                           </div>
+                           <h3>Votos de Deputados</h3>
+                           <p>Many desktop publishing packages and
+                              web page editors 
+                           </p>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="service_box text_align_center">
+                           <div class="ser_img">
+                              <figure><img src="images/" alt="Serviço 2 do Software"/></figure>
+                           </div>
+                           <h3>Projetos de Leis</h3>
+                           <p>Many desktop publishing packages and
+                              web page editors 
+                           </p>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="service_box text_align_center">
+                           <div class="ser_img">
+                              <figure><img src="images/" alt="Serviço 3 do Software"/></figure>
+                           </div>
+                           <h3>Relacionamentos entre Partidos</h3>
+                           <p>Many desktop publishing packages and
+                              web page editors 
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12">
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end service -->
+      <!--  footer -->
+      <footer>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <a class="logo_bottom" href="index.html">VerificaBR</a>
+                  </div>
+                  <div class="col-md-12">
+                     <form class="form_subscri">
+                        <div class="row">
+                        </div>
+                     </form>
+                  </div>
+                  <div class="col-lg-9 col-md-8">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="infoma text_align_left">
+                              <h3>Menu</h3>
+                              <ul class="menu_bottom">
+                                 <li><a href="index.html">Inicial</a></li>
+                                 <li><a href="about.html">Sobre </a></li>
+                                 <li><a href="serviec.html">Projeto Leis</a></li>
+                                 <li><a href="testimonial.html">Deputados</a></li>
+                                 <li><a href="blog.html">Conexões</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="infoma text_align_left">
+                              <h3>Serviços</h3>
+                              <ul class="menu_bottom">
+                                 <li><a href="Javascript:void(0)">Projetos de Leis</a></li>
+                                 <li><a href="Javascript:void(0)">Relacionamentos entre Partidos </a></li>
+                                 <li><a href="Javascript:void(0)">Votos de Deputados</a></li>
+                                 <li><a href="Javascript:void(0)">Lorem Ipsum</a></li>
+                                 <li><a href="Javascript:void(0)">Lorem Ipsum</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-4">
+                     <div class="infoma">
+                        <h3>Redes Sociais</h3>
+                        <ul class="social_icon">
+                           <li><a href="Javascript:void(0)"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                           <li><a href="Javascript:void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                           <li><a href="Javascript:void(0)"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                           <li><a href="Javascript:void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                           <li><a href="Javascript:void(0)"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        </ul>
+                        <ul class="conta">
+                           <li><i class="fa fa-map-marker" aria-hidden="true"></i>Localização 
+                           </li>
+                           <li><i class="fa fa-phone" aria-hidden="true"></i>Chame +01 1234567890</li>
+                           <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> verifica.br@gmail.com</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p>© 2020 All Rights Reserved.  <a href="https://html.design/">VerificaBR</a></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.0.0.min.js') }}"></script>
+    <!-- sidebar -->
+    <script src="{{ url_for('static', filename='js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
 
-    <h1>TESTE JOAO GAY</h1>
-    <h2>Beleza!</h2>
+    <script>
+        document.getElementById('login-button').addEventListener('click', function() {
+            window.location.href = "{{ url_for('login') }}";
+        });
+    </script>
     
-</body>
+    </body>   
 </html>

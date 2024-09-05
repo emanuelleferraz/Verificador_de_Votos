@@ -9,6 +9,9 @@ db = client.db('informations_Deputados_and_Projetos', username='root', password=
 # Selecionar a coleção
 collection = db.collection('deputados')
 
+def findAllDeputados():
+    return collection.all()
+
 def insertDeputado(name, party, number): 
     document = {
     "record": number,
@@ -19,15 +22,24 @@ def insertDeputado(name, party, number):
 
 def deleteDeputado(name):
     deputado_to_delete = findDeputadoByName(name)
-    key_to_delete = deputado_to_delete["_key"]
+    key_to_delete = deputado_to_delete[0]["_key"]
     collection.delete(key_to_delete)
 
 def findDeputadoByName(name):
-    deputado = collection.find({"nome":name})
+    cursor = db.aql.execute(
+        'FOR d IN deputados FILTER d.nome LIKE @name RETURN d',
+        bind_vars={'name': f'%{name}%'}
+    )
+    deputado = list(cursor)
     return deputado
 
+
 def findDeputadoByRecord(number):
-    deputado = collection.find({"record":number})
+    cursor = db.aql.execute(
+        'FOR d IN deputados FILTER d.record == @number RETURN d',
+        bind_vars={'number': number}
+    )
+    deputado = list(cursor)
     return deputado
 
 def updateDeputadoByName(party, name):

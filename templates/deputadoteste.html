@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Deputados</title>
+</head>
+<body>
+    <h1>Lista de Deputados</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Partido</th>
+                <th>Registro</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for deputado in deputados %}
+            <tr>
+                <td>{{ deputado.name }}</td>
+                <td>{{ deputado.party }}</td>
+                <td>{{ deputado.record }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
