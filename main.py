@@ -13,7 +13,7 @@ def index():
 @app.route("/deputados")
 def deputados():
     deputados_list = findAllDeputados()
-    return render_template("deputadoteste.html", deputados=deputados_list)
+    return render_template("deputados.html", deputados=deputados_list)
 
 @app.route("/login")
 def login():
