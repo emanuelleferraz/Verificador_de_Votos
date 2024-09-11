@@ -34,6 +34,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
    <!-- body -->
+
    <body class="main-layout">
       <!-- loader  -->
       <div class="loader_bg">
@@ -89,17 +90,18 @@
             </div>
          </div>
       </div>
+      
       <!-- end header inner -->
       <!-- end header -->
       <!-- Login -->
       <div class="page">
-        <form method="POST" class="formLogin">
+        <form action="{{ url_for('loginPost') }}" method="POST" class="formLogin">
             <h1 style="color: black;">Login</h1>
             <p>Informe os dados de acesso.</p>
-            <label for="email">E-mail</label>
-            <input type="email" placeholder="Digite seu e-mail" autofocus="true" />
+            <label for="email">Usuário</label>
+            <input type="text" name ="user" placeholder="Digite o usuário" autofocus="true" />
             <label for="password">Senha</label>
-            <input type="password" placeholder="Digite seu e-mail" />
+            <input type="password" name = "password" placeholder="Digite sua senha" />
             <input type="submit" value="Acessar" class="btn" />
         </form>
         </div>

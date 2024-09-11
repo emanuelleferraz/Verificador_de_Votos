@@ -58,14 +58,14 @@
                      </button>
                      <div class="collapse navbar-collapse" id="navbarsExample04">
                         <div class="logo">
-                           <a href="index.html"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
+                           <a  href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
                         </div>
                         <ul class="navbar-nav mr-auto">
                            <li class="nav-item active">
-                              <a class="nav-link" href="index.html">Início</a>
+                              <a class="nav-link" href="{{ url_for('index') }}">Início</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="about.html">Sobre</a>
+                              <a class="nav-link" href="#sobre">Sobre</a>
                            </li>
                            <li class="nav-item">
                               <a class="nav-link" href="{{ url_for('projeto_leis') }}">Projetos de Leis</a>
@@ -85,8 +85,19 @@
                </div>
                <div class="col-md-4 re_no">
                   <ul class="infomaco">
+
                      <li class="telefone"><i class="fa fa-phone" aria-hidden="true"></i> +01 1234567890</li>
+                     
+                     {% if 'user' in session %}
+
+                     <button id="logout-button" class="btn btn-primary logout" data-animation="animated bounceInLeft">Logout</button>
+
+                    {% else %}
+                  
                      <button id="login-button" class="btn btn-primary login" data-animation="animated bounceInLeft">Login</button>
+
+                     {% endif %}
+
                   </ul>
                </div>
             </div>
@@ -121,8 +132,8 @@
                                           <p data-animation="animated bounceInLeft">
                                              There are many variations of passages of Loremalteration in some form, by injected humour, or randomised 
                                           </p>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Read More</button>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Get A Quote</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Leia Mais</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Confira os votos</button>
                                        </div>
                                     </div>
                                     <div class="col-md-7">
@@ -148,8 +159,8 @@
                                           <p data-animation="animated bounceInLeft">
                                              There are many variations of passages of Loremalteration in some form, by injected humour, or randomised 
                                           </p>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Read More</button>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Get A Quote</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Leia Mais</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Confira conexões</button>
                                        </div>
                                     </div>
                                     <div class="col-md-7">
@@ -175,8 +186,8 @@
                                           <p data-animation="animated bounceInLeft">
                                              There are many variations of passages of Loremalteration in some form, by injected humour, or randomised 
                                           </p>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Read More</button>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Get A Quote</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Leia Mais</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Confira as leis</button>
                                        </div>
                                     </div>
                                     <div class="col-md-7">
@@ -207,7 +218,7 @@
       </div>
       <!-- end banner -->
       <!-- about -->
-      <div class="about">
+      <div id="sobre" class="about">
          <div class="container">
             <div class="row d_flex grid">
                <div class="col-md-6">
@@ -376,7 +387,17 @@
         document.getElementById('login-button').addEventListener('click', function() {
             window.location.href = "{{ url_for('login') }}";
         });
-    </script>
+
+        
+   </script>
+
+   <script>
+
+      document.getElementById('logout-button').addEventListener('click', function() {
+            window.location.href = "{{ url_for('logout') }}";
+        });
+
+   </script>
     
     </body>   
 </html>
