@@ -8,7 +8,3 @@ deputados = deputados.json()
 
 for i in deputados['dados']:
     insertDeputado(i['nome'], i['siglaPartido'], i['id'])
-    
-
-
-
