@@ -91,3 +91,10 @@ def findLaws(name):
 def findLawByNumber(number):
     law = collection_projetos.find({"lawNumber":number})
     return law
+
+def findAllLaws():
+    cursor = db.aql.execute(
+        'FOR l IN projetos_de_lei RETURN l'
+    )
+    laws = list(cursor)
+    return laws

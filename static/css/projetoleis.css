@@ -1,0 +1,6 @@
+/* Limita a altura da lista de leis e adiciona rolagem */
+.listaLeis {
+    max-height: 550px;
+    overflow-y: auto;
+    padding-right: 10px; /* Para evitar que o texto seja cortado pelo scrollbar */
+ }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <!-- basic -->
   <meta charset="utf-8">
@@ -33,6 +34,7 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
+
 <body class="main-layout">
   <!-- loader  -->
   <div class="loader_bg">
@@ -58,7 +60,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarsExample04">
               <div class="logo">
-                <a  href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
               </div>
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -68,7 +70,7 @@
                   <a class="nav-link" href="about.html">Sobre</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="service.html">Projetos de Leis</a>
+                  <a class="nav-link"href="{{ url_for('projeto_leis') }}">Projetos de Leis</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url_for('deputados') }}">Deputados</a>
@@ -99,7 +101,7 @@
           <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
               <div class="search-container">
-                <form class="d-flex" role="search" id="searchForm">
+                <form class="d-flex" role="search" id="searchForm" onsubmit="return handleSubmit(event)">
                   <input class="form-control me-3" type="search" placeholder="Buscar por Nome ou Partido" aria-label="Search" id="searchInput" autofocus>
                   <i class="fa fa-search search-icon"></i>
                 </form>
@@ -108,27 +110,27 @@
           </nav>
           <div class="table-container">
             <table class="table table-hover">
-               <thead>
-                 <tr>
-                   <th scope="col">Nome</th>
-                   <th scope="col">Partido</th>
-                   <th scope="col">Registro</th>
-                   <th scope="col">Ações</th> <!-- Nova coluna para o botão -->
-                 </tr>
-               </thead>
-               <tbody id="deputadosTable">
-                 {% for deputado in deputados %}
-                 <tr>
-                   <td>{{ deputado.name }}</td>
-                   <td>{{ deputado.party }}</td>
-                   <td>{{ deputado.record }}</td>
-                   <td>
-                     <a href="" class="btn btn-success btn-sm">Projetos de Leis</a>
-                   </td>
-                 </tr>
-                 {% endfor %}
-               </tbody>
-             </table>
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Partido</th>
+                  <th scope="col">Registro</th>
+                  <th scope="col">Ações</th> <!-- Nova coluna para o botão -->
+                </tr>
+              </thead>
+              <tbody id="deputadosTable">
+                {% for deputado in deputados %}
+                <tr>
+                  <td>{{ deputado.name }}</td>
+                  <td>{{ deputado.party }}</td>
+                  <td>{{ deputado.record }}</td>
+                  <td>
+                    <a href="" class="btn btn-success btn-sm">Projetos de Leis</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -159,6 +161,15 @@
         });
       });
     });
+
+    function handleSubmit(event) {
+      // Previne o comportamento padrão do formulário (envio)
+      event.preventDefault();
+      // Garante que a função de busca é chamada
+      $('#searchInput').trigger('input');
+      return false; // Evita o envio do formulário
+    }
   </script>
 </body>
+
 </html>

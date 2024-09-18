@@ -19,6 +19,7 @@
    <!-- style css -->
    <link rel="stylesheet" href="{{ url_for('static', filename='css/leis.css') }}">
    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/projetoleis.css') }}">
    <!-- Responsive-->
    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
    <!-- fevicon -->
@@ -107,30 +108,30 @@
                   <div class="container-fluid">
                      <div class="search-container">
                         <form class="d-flex" role="search" id="searchForm">
-                           <input class="form-control me-3" type="search" placeholder="Buscar por Nome" aria-label="Search"
-                              id="searchInput" autofocus>
+                           <input class="form-control me-3" type="search"
+                              placeholder="Buscar por Nome, Número da Lei e Data de Aprovação" aria-label="Search"
+                              id="searchInput" autofocus onkeyup="searchLeis()">
                            <i class="fa fa-search search-icon"></i>
                         </form>
                      </div>
                   </div>
                </nav>
                <ol class="listaLeis">
+                  <!-- Itera sobre as leis vindas do banco de dados -->
+                  {% for lei in leis %}
                   <li class="lei">
-                     <h3 class="nome" style="color: darkgreen;"><strong>PL 3592/2024</strong></h3>
-                     <span class="autor"><strong>Autor:</strong> Camila Jara</span>
-                     <span class="data"><strong>Data:</strong> 17/09/2024</span>
-                     <span class="descricao"><strong>Descrição:</strong> Altera a Lei no 8.629, de 25 de fevereiro de 1993, e a Lei no 9.605, de 12 de
-                        fevereiro de 1998, para estabelecer a reincidente participação do proprietário no cometimento de crimes ambientais
-                        como causa de desapropriação por descumprimento da função social da propriedade. </span>
+                     <h3 class="nome" style="color: darkgreen;"><strong>LEI Nº {{ lei.lawNumber }} - {{ lei.nome }}</strong></h3>
+                     <span class="autor"><strong>Autor:</strong> {{ lei.deputado }}</span>
+                     <span class="data"><strong>Data:</strong> {{ lei.data }}</span>
+                     <span class="descricao"><strong>Descrição:</strong> {{ lei.description }}</span>
                      <hr>
                   </li>
+                  {% endfor %}
                </ol>
             </div>
          </div>
       </div>
    </div>
-
-
 
    <!-- Javascript files-->
    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
@@ -142,6 +143,29 @@
    <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
 
+   <!-- Script de busca dinâmica -->
+   <script>
+      function searchLeis() {
+         // Captura o valor digitado no campo de pesquisa e converte para minúsculas
+         const input = document.getElementById('searchInput').value.toLowerCase();
+
+         // Seleciona todas as leis na lista
+         const leis = document.querySelectorAll('.listaLeis .lei');
+
+         // Percorre cada item de lei e verifica se o valor digitado aparece no nome, número ou data
+         leis.forEach(function(lei) {
+            const numeroNome = lei.querySelector('.nome').textContent.toLowerCase(); // Número da Lei e Nome
+            const data = lei.querySelector('.data').textContent.toLowerCase(); // Data
+
+            // Verifica se a busca está presente no nome ou na data
+            if (numeroNome.includes(input) || data.includes(input)) {
+               lei.style.display = ''; // Exibe o item de lei
+            } else {
+               lei.style.display = 'none'; // Oculta o item de lei
+            }
+         });
+      }
+   </script>
 </body>
 
 </html>

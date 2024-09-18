@@ -1,6 +1,7 @@
 from flask import Flask, render_template, session, flash, request, redirect, url_for
 from database.databaseDeputados import findAllDeputados
 from database.databaseAdministrador import buscar_usuario
+from database.databaseProjetos import findAllLaws
 
 #Inicialização
 app = Flask(__name__)
@@ -18,7 +19,9 @@ def deputados():
 
 @app.route("/projeto_leis")
 def projeto_leis():
-    return render_template("projetoLeis.html")
+    leis_list = findAllLaws()
+
+    return render_template("projetoLeis.html", leis=leis_list)
 
 @app.route("/conexoes")
 def conexoes():

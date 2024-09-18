@@ -1,5 +1,6 @@
 from arango import ArangoClient
-from databaseDeputados import updateDeputadoLaw
+from database.databaseDeputados import updateDeputadoLaw
+
 
 # Criar uma instância do cliente
 client = ArangoClient(hosts='http://localhost:8529')
@@ -20,7 +21,6 @@ def insertLaw(name, description, number, deputado, data):
     }
     collection.insert(document)
     updateDeputadoLaw(number, deputado)
-
 
 def deleteLaw(name):
     law_to_delete = findLawByName(name)
@@ -60,3 +60,10 @@ def updateLawByNumber(description, number):
         "description": description
     }
     collection.update(document_to_update)
+
+def findAllLaws():
+    cursor = db.aql.execute(
+        'FOR l IN projetos_de_lei RETURN l'
+    )
+    laws = list(cursor)
+    return laws
