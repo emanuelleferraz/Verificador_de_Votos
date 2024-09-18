@@ -67,13 +67,13 @@ def updateDeputadoByRecord(party, number):
     }
     collection.update(document_to_update)
 
-def updateDeputadoLaw(number, name):
+def updateDeputadoLaw(lawName, name):
     deputado_to_update = findDeputadoByName(name)
     key_to_update = deputado_to_update[0]["_key"]
     law = deputado_to_update[0]["laws"]
     document_to_update = {
         "_key": key_to_update,
-        "laws": law + ',' + number
+        "laws": law + ',' + lawName
     }
     collection.update(document_to_update)
 

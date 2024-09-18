@@ -26,6 +26,8 @@ def projeto_leis():
 @app.route("/conexoes")
 def conexoes():
     return render_template("conexoes.html")
+
+
     
 @app.route("/login")
 def login():
