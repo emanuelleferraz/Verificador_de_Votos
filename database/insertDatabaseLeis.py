@@ -2,7 +2,6 @@ from databaseProjetos import insertLaw
 from databaseDeputados import findAll
 
 
-
 insertLaw("PL 3592/2024", "Altera a Lei no 8.629, de 25 de fevereiro de 1993, e a Lei no 9.605, de 12 de fevereiro de 1998, para estabelecer a reincidente participação do proprietário no cometimento de crimes ambientais como causa de desapropriação por descumprimento da função social da propriedade.", "11000", "Camila Jara", "17/09/2024")
 
 insertLaw("PL 3591/2024", "Institui a Política Nacional de Saúde na Escola.", "11001", "Lucyana Genésio", "17/09/2024");
