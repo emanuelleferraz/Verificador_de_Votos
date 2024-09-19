@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+.header{
+    margin-top: 30px;
+}
+
 #areaLeis{
     background-color: #fff;
     border-radius: 7px;

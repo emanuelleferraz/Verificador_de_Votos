@@ -10,6 +10,10 @@ body{
     align-items: center;
 }
 
+.header{
+    margin-top: 30px;
+}
+
 #areaTabela{
     background-color: #fff;
     border-radius: 7px;

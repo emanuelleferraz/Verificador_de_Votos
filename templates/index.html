@@ -58,7 +58,7 @@
                      </button>
                      <div class="collapse navbar-collapse" id="navbarsExample04">
                         <div class="logo">
-                           <a  href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
+                           <a  href="{{ url_for('index') }}"><img id="logoHeader" src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
                         </div>
                         <ul class="navbar-nav mr-auto">
                            <li class="nav-item active">
@@ -76,9 +76,15 @@
                            <li class="nav-item">
                               <a class="nav-link" href="{{ url_for('conexoes') }}">Conexões</a>
                            </li>
+
+                           {% if 'user' in session %}
+
                            <li class="nav-item">
-                              <a class="nav-link" style="background: transparent;" href="Javascript:void(0)"><i class="fa fa-search"></i></a>
+                              <a class="nav-link" href="{{ url_for('adm') }}">Administração</a>
                            </li>
+
+                           {% endif %}
+
                         </ul>
                      </div>
                   </nav>
@@ -126,11 +132,11 @@
                                     <div class="col-md-5">
                                        <div class="zon_text">
                                           <h1 data-animation="animated bounceInLeft">
-                                             Verifique<br>
-                                             Votos
+                                             Crie<br>
+                                             Conexões
                                           </h1>
                                           <p data-animation="animated bounceInLeft">
-                                             Confira os votos dos deputados e fique por dentro de como eles se posicionam em cada projeto de lei. 
+                                             Descubra quem vota de forma similar e quantas vezes eles concordaram nas decisões parlamentares.
                                           </p>
                                           <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Leia Mais</button>
                                           <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Confira os votos</button>
@@ -139,7 +145,7 @@
                                     <div class="col-md-7">
                                        <div class="coff_img">
                                         <figure>
-                                            <img src="{{ url_for('static', filename='images/deputados.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos.">
+                                            <img src="{{ url_for('static', filename='images/deputados.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos." class="imagemSlider" >
                                         </figure>
                                        </div>
                                     </div>
@@ -153,12 +159,11 @@
                                     <div class="col-md-5">
                                        <div class="zon_text">
                                           <h1 data-animation="animated bounceInLeft">
-                                             Crie<br>
-                                             Conexões
+                                             Veja<br>
+                                             Deputados
                                           </h1>
                                           <p data-animation="animated bounceInLeft">
-                                             Descubra quem vota de forma similar e quantas vezes eles concordaram nas decisões parlamentares.
-                                          </p>
+                                             Confira os Projetos de Leis e Projetos de Emenda na Constituição dos deputados.                                           </p>
                                           <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Leia Mais</button>
                                           <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Confira conexões</button>
                                        </div>
@@ -166,7 +171,7 @@
                                     <div class="col-md-7">
                                        <div class="coff_img">
                                         <figure>
-                                            <img src="{{ url_for('static', filename='images/deputados.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos.">
+                                            <img src="{{ url_for('static', filename='images/verificadep.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos." class="imagemSlider" >
                                         </figure>
                                        </div>
                                     </div>
@@ -180,11 +185,11 @@
                                     <div class="col-md-5">
                                        <div class="zon_text">
                                           <h1 data-animation="animated bounceInLeft">
-                                             Veja<br>
+                                             Verifique<br>
                                              Leis
                                           </h1>
                                           <p data-animation="animated bounceInLeft">
-                                             Acompanhe os projetos de lei em andamento e veja como os parlamentares estão votando. 
+                                             Acompanhe os projetos de lei em andamento. 
                                           </p>
                                           <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Leia Mais</button>
                                           <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Confira as leis</button>
@@ -193,7 +198,7 @@
                                     <div class="col-md-7">
                                        <div class="coff_img">
                                         <figure>
-                                            <img src="{{ url_for('static', filename='images/deputados.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos.">
+                                            <img src="{{ url_for('static', filename='images/verificaleis.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos." class="imagemSlider3">
                                         </figure>
                                        </div>
                                     </div>
@@ -249,7 +254,7 @@
                <div class="col-md-12">
                   <div class="titlepage text_align_center">
                      <h2>Serviços</h2>
-                     <p>sing 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors 
+                     <p>Através do VerificaBR você consegue visualizar todos os deputados, projetos de leis que cada deputado criou e através da página de conexões você conseguirá criar conexões entre os deputados e partidos.
                      </p>
                   </div>
                </div>
@@ -263,9 +268,8 @@
                            <div class="ser_img">
                               <figure><img src="images/" alt="Serviço 1 do Software"/></figure>
                            </div>
-                           <h3>Votos de Deputados</h3>
-                           <p>Many desktop publishing packages and
-                              web page editors 
+                           <h3>Deputados</h3>
+                           <p>Confira todos os deputados brasileiros na página de deputados.
                            </p>
                         </div>
                      </div>
@@ -275,8 +279,7 @@
                               <figure><img src="images/" alt="Serviço 2 do Software"/></figure>
                            </div>
                            <h3>Projetos de Leis</h3>
-                           <p>Many desktop publishing packages and
-                              web page editors 
+                           <p>Confira os projetos de leis dos deputados brasileiros na página de projetos de leis 
                            </p>
                         </div>
                      </div>
@@ -285,9 +288,8 @@
                            <div class="ser_img">
                               <figure><img src="images/" alt="Serviço 3 do Software"/></figure>
                            </div>
-                           <h3>Relacionamentos entre Partidos</h3>
-                           <p>Many desktop publishing packages and
-                              web page editors 
+                           <h3>Relacionamentos entre Deputados</h3>
+                           <p>Crie conexões entre os deputados brasileiros, bem como seus partidos.
                            </p>
                         </div>
                      </div>
@@ -319,9 +321,9 @@
                            <div class="infoma text_align_left">
                               <h3>Menu</h3>
                               <ul class="menu_bottom">
-                                 <li><a href="index.html">Inicial</a></li>
+                                 <li><a href="{{ url_for('index') }}">Inicial</a></li>
                                  <li><a href="about.html">Sobre </a></li>
-                                 <li><a href="serviec.html">Projeto Leis</a></li>
+                                 <li><a href="{{ url_for('projeto_leis') }}">Projeto Leis</a></li>
                                  <li><a href="{{ url_for('deputados') }}">Deputados</a></li>
                                  <li><a href="blog.html">Conexões</a></li>
                               </ul>
@@ -333,9 +335,9 @@
                               <ul class="menu_bottom">
                                  <li><a href="Javascript:void(0)">Projetos de Leis</a></li>
                                  <li><a href="Javascript:void(0)">Relacionamentos entre Partidos </a></li>
-                                 <li><a href="Javascript:void(0)">Votos de Deputados</a></li>
-                                 <li><a href="Javascript:void(0)">Lorem Ipsum</a></li>
-                                 <li><a href="Javascript:void(0)">Lorem Ipsum</a></li>
+                                 <li><a href="Javascript:void(0)">Todos os Deputados</a></li>
+                                 <li><a href="Javascript:void(0)">Relacionamento entre Deputados</a></li>
+                                 <li><a href="Javascript:void(0)">Projetos de Leis por Deputado</a></li>
                               </ul>
                            </div>
                         </div>
@@ -352,7 +354,7 @@
                            <li><a href="Javascript:void(0)"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
                         </ul>
                         <ul class="conta">
-                           <li><i class="fa fa-map-marker" aria-hidden="true"></i>Localização 
+                           <li><i class="fa fa-map-marker" aria-hidden="true"></i>Cruzeiro Celeste, João Monlevade-MG 
                            </li>
                            <li><i class="fa fa-phone" aria-hidden="true"></i>Chame +01 1234567890</li>
                            <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> verifica.br@gmail.com</a></li>
@@ -365,7 +367,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-12">
-                        <p>© 2020 All Rights Reserved.  <a href="https://html.design/">VerificaBR</a></p>
+                        <p>© 2024 All Rights Reserved.  <a href="https://html.design/">VerificaBR</a></p>
                      </div>
                   </div>
                </div>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Administração</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Administração</h1>
+        
+        <!-- Projetos de Leis -->
+        <h2>Projetos de Leis</h2>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addLeiModal">
+            Adicionar Lei
+        </button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Deputado</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lei in leis %}
+                <tr>
+                    <td>{{ lei.name }}</td>
+                    <td>{{ lei.description }}</td>
+                    <td>{{ lei.deputado }}</td>
+                    <td>{{ lei.data }}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editLeiModal" data-name="{{ lei.name }}" data-description="{{ lei.description }}" data-deputado="{{ lei.deputado }}" data-data="{{ lei.data }}">Editar</button>
+                        <a href="{{ url_for('excluir_lei', name=lei.name) }}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Deputados -->
+        <h2>Deputados</h2>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDeputadoModal">
+            Adicionar Deputado
+        </button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Partido</th>
+                    <th>Número</th>
+                    <th>Leis</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for deputado in deputados %}
+                <tr>
+                    <td>{{ deputado.name }}</td>
+                    <td>{{ deputado.party }}</td>
+                    <td>{{ deputado.record }}</td>
+                    <td>{{ deputado.laws }}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editDeputadoModal" data-name="{{ deputado.name }}" data-party="{{ deputado.party }}" data-number="{{ deputado.record}}" data-laws="{{ deputado.laws }}">Editar</button>
+                        <a href="{{ url_for('excluir_deputado', name=deputado.name) }}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Lei Modal -->
+    <div class="modal fade" id="addLeiModal" tabindex="-1" role="dialog" aria-labelledby="addLeiModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addLeiModalLabel">Adicionar Projeto de Lei</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url_for('administracao') }}" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Nome:</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Descrição:</label>
+                            <input type="text" class="form-control" name="description" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="deputado">Deputado:</label>
+                            <input type="text" class="form-control" name="deputado" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="data">Data:</label>
+                            <input type="date" class="form-control" name="data" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <input type="submit" name="add_lei" class="btn btn-primary" value="Adicionar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Lei Modal -->
+    <div class="modal fade" id="editLeiModal" tabindex="-1" role="dialog" aria-labelledby="editLeiModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editLeiModalLabel">Editar Projeto de Lei</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="editLeiForm" action="" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="edit_name">Nome:</label>
+                            <input type="text" class="form-control" id="edit_name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_description">Descrição:</label>
+                            <input type="text" class="form-control" id="edit_description" name="description" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_deputado">Deputado:</label>
+                            <input type="text" class="form-control" id="edit_deputado" name="deputado" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_data">Data:</label>
+                            <input type="date" class="form-control" id="edit_data" name="data" required>
+                        </div>
+                        <input type="hidden" id="edit_old_name" name="old_name">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <input type="submit" name="edit_lei" class="btn btn-primary" value="Atualizar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Deputado Modal -->
+    <div class="modal fade" id="addDeputadoModal" tabindex="-1" role="dialog" aria-labelledby="addDeputadoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addDeputadoModalLabel">Adicionar Deputado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url_for('administracao') }}" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Nome:</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="party">Partido:</label>
+                            <input type="text" class="form-control" name="party" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="number">Número:</label>
+                            <input type="text" class="form-control" name="number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="laws">Leis:</label>
+                            <input type="text" class="form-control" name="laws">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <input type="submit" name="add_deputado" class="btn btn-primary" value="Adicionar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Deputado Modal -->
+    <div class="modal fade" id="editDeputadoModal" tabindex="-1" role="dialog" aria-labelledby="editDeputadoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editDeputadoModalLabel">Editar Deputado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="editDeputadoForm" action="" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="edit_name">Nome:</label>
+                            <input type="text" class="form-control" id="edit_name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_party">Partido:</label>
+                            <input type="text" class="form-control" id="edit_party" name="party" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_number">Número:</label>
+                            <input type="text" class="form-control" id="edit_number" name="number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_laws">Leis:</label>
+                            <input type="text" class="form-control" id="edit_laws" name="laws">
+                        </div>
+                        <input type="hidden" id="edit_old_name" name="old_name">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <input type="submit" name="edit_deputado" class="btn btn-primary" value="Atualizar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+
+    <script>
+        $('#editLeiModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var name = button.data('name');
+            var description = button.data('description');
+            var deputado = button.data('deputado');
+            var data = button.data('data');
+            var form = $('#editLeiForm');
+
+            form.attr('action', '/editar_lei/' + encodeURIComponent(name));
+            form.find('#edit_name').val(name);
+            form.find('#edit_description').val(description);
+            form.find('#edit_deputado').val(deputado);
+            form.find('#edit_data').val(data);
+        });
+
+        $('#editDeputadoModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var name = button.data('name');
+            var party = button.data('party');
+            var number = button.data('number');
+            var laws = button.data('laws');
+            var form = $('#editDeputadoForm');
+
+            form.attr('action', '/editar_deputado/' + encodeURIComponent(name));
+            form.find('#edit_name').val(name);
+            form.find('#edit_party').val(party);
+            form.find('#edit_number').val(number);
+            form.find('#edit_laws').val(laws);
+            form.find('#edit_old_name').val(name);
+        });
+    </script>
+</body>
+</html>

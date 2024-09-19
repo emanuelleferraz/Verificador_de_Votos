@@ -64,13 +64,10 @@
                            <a class="nav-link" href="/">Início</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="/sobre">Sobre</a>
+                           <a class="nav-link" href="{{ url_for('projeto_leis') }}">Projetos de Leis</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="/projetos">Projetos de Leis</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="/deputados">Deputados</a>
+                           <a class="nav-link" href="{{ url_for('projeto_leis') }}">Deputados</a>
                         </li>
                      </ul>
                   </div>
@@ -84,21 +81,21 @@
    <div class="container">
     <div class="row">
        <div class="col-12">
-        <h1 class="text-center">Projetos de Leis - {{ deputado.name }}</h1>
-          <div class="border rounded-3 p-5 mt-5 shadow box-area">
+          <div id="areaLeis" class="border rounded-3 p-5 mt-5 shadow box-area">
+            <h1 class="text-center" style="color: darkgreen; margin-bottom: 20px;"><strong>Projetos de Leis - {{ deputado }}</strong></h1>
              
              {% if leis %}
              <!-- Lista de projetos de leis -->
-             <ol>
+             <ol class="listaLeis">
                 {% for lei in leis %}
                 <li class="lei">
-                   <h3><strong>LEI Nº {{ lei.lawNumber }} - {{ lei.nome }}</strong></h3>
-                   <p><strong>Data:</strong> {{ lei.data }}</p>
-                   <p><strong>Descrição:</strong> {{ lei.description }}</p>
+                   <h3 class="name" style="color: darkgreen;"><strong>{{ lei.name }}</strong></h3>
+                   <p class="data"><strong>Data:</strong> {{ lei.data }}</p>
+                   <p class="descricao"><strong>Descrição:</strong> {{ lei.description }}</p>
                    <hr>
                 </li>
                 {% endfor %}
-             </ol>
+             </ol>   
              {% else %}
              <!-- Se não houver projetos de leis -->
              <p class="text-center" style="color: red; font-size: 18px;"><strong>Este deputado não possui projetos de leis registrados.</strong></p>

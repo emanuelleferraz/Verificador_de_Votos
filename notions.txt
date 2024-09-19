@@ -1,3 +1,0 @@
-localhost:20000 -> Para acessar o servidor 
-
-localhost:5500 -> Para acessar os arquivos do projeto

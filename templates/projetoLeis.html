@@ -71,20 +71,13 @@
                            <a class="nav-link" href="{{ url_for('index') }}">Início</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="about.html">Sobre</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="service.html">Projetos de Leis</a>
+                           <a class="nav-link" href="{{ url_for('projeto_leis') }}">Projetos de Leis</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="{{ url_for('deputados') }}">Deputados</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="blog.html">Conexões</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link" style="background: transparent;" href="Javascript:void(0)"><i
-                                 class="fa fa-search"></i></a>
                         </li>
                      </ul>
                   </div>
@@ -109,7 +102,7 @@
                      <div class="search-container">
                         <form class="d-flex" role="search" id="searchForm">
                            <input class="form-control me-3" type="search"
-                              placeholder="Buscar por Nome, Número da Lei e Data de Aprovação" aria-label="Search"
+                              placeholder="Buscar por Nome e Data de Apresentação (DD/MM/AAAA)" aria-label="Search"
                               id="searchInput" autofocus onkeyup="searchLeis()">
                            <i class="fa fa-search search-icon"></i>
                         </form>
@@ -120,7 +113,7 @@
                   <!-- Itera sobre as leis vindas do banco de dados -->
                   {% for lei in leis %}
                   <li class="lei">
-                     <h3 class="nome" style="color: darkgreen;"><strong>LEI Nº {{ lei.lawNumber }} - {{ lei.nome }}</strong></h3>
+                     <h3 class="nome" style="color: darkgreen;"><strong>{{ lei.name }}</strong></h3>
                      <span class="autor"><strong>Autor:</strong> {{ lei.deputado }}</span>
                      <span class="data"><strong>Data:</strong> {{ lei.data }}</span>
                      <span class="descricao"><strong>Descrição:</strong> {{ lei.description }}</span>

@@ -49,3 +49,11 @@ def findAllLaws():
     )
     laws = list(cursor)
     return laws
+
+def findLawsByDeputadoName(deputado_name):
+    cursor = db.aql.execute(
+        'FOR l IN projetos_de_lei FILTER l.deputado == @deputado RETURN l',
+        bind_vars={'deputado': deputado_name}
+    )
+    laws = list(cursor)
+    return laws

@@ -98,3 +98,6 @@ def findAllLaws():
     )
     laws = list(cursor)
     return laws
+
+
+
