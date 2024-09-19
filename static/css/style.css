@@ -130,6 +130,10 @@ ol {
      list-style: none;
 }
 
+.aboutTexto{
+     text-align: justify;
+}
+
 p {
      margin: 0px;
      font-weight: 400;
@@ -169,6 +173,10 @@ img {
      max-width: 90%;
      height: auto;
      margin-left: 130px;
+}
+
+.aboutTitulo{
+     margin-bottom: 12px;
 }
 
  :focus {

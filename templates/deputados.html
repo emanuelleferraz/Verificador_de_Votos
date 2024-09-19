@@ -67,13 +67,13 @@
                   <a class="nav-link" href="{{ url_for('index') }}">Início</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link"href="{{ url_for('projeto_leis') }}">Projetos de Leis</a>
+                  <a class="nav-link" href="{{ url_for('projeto_leis') }}">Projetos de Leis</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url_for('deputados') }}">Deputados</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="blog.html">Conexões</a>
+                  <a class="nav-link" href="{{ url_for('pecs') }}">Projeto de Emenda à Constituição</a>
                 </li>
               </ul>
             </div>
@@ -102,6 +102,9 @@
               </div>
             </div>
           </nav>
+          <div class="d-flex justify-content-end mb-3">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addDeputadoModal">Adicionar Deputado</button>
+          </div>
           <div class="table-container">
             <table class="table table-hover">
               <thead>
@@ -109,7 +112,7 @@
                   <th scope="col">Nome</th>
                   <th scope="col">Partido</th>
                   <th scope="col">Registro</th>
-                  <th scope="col">Ações</th> <!-- Nova coluna para o botão -->
+                  <th scope="col">Ações</th>
                 </tr>
               </thead>
               <tbody id="deputadosTable">
@@ -120,6 +123,11 @@
                   <td>{{ deputado.record }}</td>
                   <td>
                     <a href="{{ url_for('deputados_leis', deputado=deputado.name) }}" class="btn btn-success btn-sm">Projetos de Leis</a>
+                    <a href="{{ url_for('deputados_pecs', deputado=deputado.name) }}" class="btn btn-success btn-sm">PEC's</a>
+                    {% if session.user %}
+                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editDeputadoModal" data-name="{{ deputado.name }}" data-party="{{ deputado.party }}" data-record="{{ deputado.record }}">Editar</button>
+                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteDeputadoModal" data-name="{{ deputado.name }}">Excluir</button>
+                    {% endif %}
                   </td>
                 </tr>
                 {% endfor %}
@@ -130,39 +138,187 @@
       </div>
     </div>
   </div>
-  <!-- Javascript files-->
+
+  <!-- Modal Adicionar Deputado -->
+  <div class="modal fade" id="addDeputadoModal" tabindex="-1" aria-labelledby="addDeputadoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addDeputadoModalLabel" style="color: darkgreen;"><strong>Adicionar Deputado</strong></h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addDeputadoForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="party" class="form-label">Partido</label>
+              <input type="text" class="form-control" id="party" required>
+            </div>
+            <div class="mb-3">
+              <label for="record" class="form-label">Registro</label>
+              <input type="text" class="form-control" id="record" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+            <div id="addDeputadoError" class="text-danger mt-2" style="display: none;"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Editar Deputado -->
+  <div class="modal fade" id="editDeputadoModal" tabindex="-1" aria-labelledby="editDeputadoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editDeputadoModalLabel">Editar Deputado</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editDeputadoForm">
+            <input type="hidden" id="editRecord"> <!-- Campo oculto para o registro -->
+            <input type="hidden" id="oldName"> <!-- Campo oculto para o nome antigo -->
+            <div class="mb-3">
+              <label for="editName" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="editName" required>
+            </div>
+            <div class="mb-3">
+              <label for="editParty" class="form-label">Partido</label>
+              <input type="text" class="form-control" id="editParty" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Excluir Deputado -->
+  <div class="modal fade" id="deleteDeputadoModal" tabindex="-1" aria-labelledby="deleteDeputadoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteDeputadoModalLabel" style="color: darkgreen;"><strong>Excluir Deputado</strong></h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Você tem certeza de que deseja excluir este deputado?</p>
+        </div>
+        <div class="modal-footer">
+          <form id="deleteDeputadoForm">
+            <input type="hidden" id="deleteRecord">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-danger">Excluir</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer>
+    <div class="container">
+      <p class="text-center">© 2024 VerificaBR. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+  <!-- end footer -->
+  
+  <!-- JavaScript -->
   <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/jquery-3.0.0.min.js') }}"></script>
-  <!-- sidebar -->
-  <script src="{{ url_for('static', filename='js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
   <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/deputados.js') }}"></script>
+
   <script>
     $(document).ready(function() {
-      $('#searchInput').on('input', function() {
-        let searchValue = $(this).val().toLowerCase();
-        $('#deputadosTable tr').each(function() {
-          let name = $(this).find('td').first().text().toLowerCase();
-          let party = $(this).find('td').eq(1).text().toLowerCase();
+      // Adicionar Deputado
+      $('#addDeputadoForm').on('submit', function(event) {
+        event.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: '{{ url_for("add_deputado") }}',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            name: $('#name').val(),
+            party: $('#party').val(),
+            record: $('#record').val()
+          }),
+          success: function(response) {
+            $('#addDeputadoModal').modal('hide');
+            location.reload(); // Recarrega a página após adição bem-sucedida
+          },
+          error: function(response) {
+            $('#addDeputadoError').text(response.responseJSON.message).show(); // Exibe mensagem de erro
+          }
+        });
+      });
 
-          if (name.includes(searchValue) || party.includes(searchValue)) {
-            $(this).show();
-          } else {
-            $(this).hide();
+      // Editar Deputado
+      $('#editDeputadoModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget);
+        var name = button.data('name');
+        var party = button.data('party');
+        var record = button.data('record'); // Adicionado para armazenar o registro
+        var modal = $(this);
+        modal.find('#editName').val(name);
+        modal.find('#editParty').val(party);
+        modal.find('#editRecord').val(record); // Preenche o campo oculto
+        modal.find('#oldName').val(name); // Preenche o campo oculto para o nome antigo
+      });
+
+      $('#editDeputadoForm').on('submit', function(event) {
+        event.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: '{{ url_for("edit_deputado") }}',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            old_name: $('#oldName').val(),
+            new_name: $('#editName').val(),
+            party: $('#editParty').val()
+          }),
+          success: function(response) {
+            $('#editDeputadoModal').modal('hide');
+            location.reload(); // Recarrega a página após edição bem-sucedida
+          },
+          error: function(response) {
+            alert(response.responseJSON.message); // Exibe mensagem de erro
+          }
+        });
+      });
+
+      // Excluir Deputado
+      $('#deleteDeputadoModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget);
+        var name = button.data('name');
+        var modal = $(this);
+        modal.find('#deleteRecord').val(name);
+      });
+
+      $('#deleteDeputadoForm').on('submit', function(event) {
+        event.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: '{{ url_for("delete_deputado") }}',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            name: $('#deleteRecord').val()
+          }),
+          success: function(response) {
+            $('#deleteDeputadoModal').modal('hide');
+            location.reload(); // Recarrega a página após exclusão bem-sucedida
+          },
+          error: function(response) {
+            alert(response.responseJSON.message); // Exibe mensagem de erro
           }
         });
       });
     });
-
-    function handleSubmit(event) {
-      // Previne o comportamento padrão do formulário (envio)
-      event.preventDefault();
-      // Garante que a função de busca é chamada
-      $('#searchInput').trigger('input');
-      return false; // Evita o envio do formulário
-    }
   </script>
 </body>
 

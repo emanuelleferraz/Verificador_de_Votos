@@ -74,7 +74,7 @@
                               <a class="nav-link" href="{{ url_for('deputados') }}">Deputados</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="{{ url_for('conexoes') }}">Conexões</a>
+                              <a class="nav-link" href="{{ url_for('pecs') }}">Projeto de Emenda à Constituição</a>
                            </li>
 
                            {% if 'user' in session %}
@@ -132,14 +132,14 @@
                                     <div class="col-md-5">
                                        <div class="zon_text">
                                           <h1 data-animation="animated bounceInLeft">
-                                             Crie<br>
-                                             Conexões
+                                             Verifique<br>
+                                             PEC's
                                           </h1>
                                           <p data-animation="animated bounceInLeft">
-                                             Descubra quem vota de forma similar e quantas vezes eles concordaram nas decisões parlamentares.
+                                             Acompanhe os Projetos de Emenda à Constituição em andamento.
                                           </p>
                                           <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Leia Mais</button>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Confira os votos</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Confira as PEC's</button>
                                        </div>
                                     </div>
                                     <div class="col-md-7">
@@ -165,7 +165,7 @@
                                           <p data-animation="animated bounceInLeft">
                                              Confira os Projetos de Leis e Projetos de Emenda na Constituição dos deputados.                                           </p>
                                           <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Leia Mais</button>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Confira conexões</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Veja Deputados</button>
                                        </div>
                                     </div>
                                     <div class="col-md-7">
@@ -235,12 +235,13 @@
                </div>
                <div class="col-md-6 order1">
                   <div class="titlepage text_align_left">
-                     <h2>Sobre o VerificaBR</h2>
-                     <p>sing 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors  
+                     <h2 class="aboutTitulo">Sobre o VerificaBR</h2><br>
+                     <p  style="text-align: justify;">O Brasil realiza um grande número de votações na Câmara dos Deputados, mas o acesso a essas informações ainda é complexo para a maioria da população.  
                      </p>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ullamcorper bibendum turpis ac lobortis. Integer malesuada ullamcorper tristique. Suspendisse sed mollis lectus, eu sollicitudin risus. Sed neque eros, accumsan fringilla tincidunt eget, interdum a erat. Suspendisse faucibus vestibulum dolor vitae pellentesque. Nullam ac enim sodales, posuere quam in, feugiat magna. Pellentesque vel varius tellus. Vestibulum tempor purus a magna viverra, in tincidunt lectus laoreet. Donec egestas dictum molestie. Aliquam tempus eget odio dictum condimentum. Proin pretium ut metus sed feugiat. Nunc convallis diam vitae blandit euismod. Quisque consequat tincidunt augue, a vehicula diam luctus in.
+                     <p  style="text-align: justify;">O VERIFICABR foi criado para simplificar esse processo, oferecendo uma ferramenta intuitiva e acessível para acompanhar o desempenho dos deputados. Com o VERIFICABR, os cidadãos podem facilmente encontrar seus candidatos eleitos e monitorar sua atuação, bem como a criação de seus projetos de leis e Propostas de Emenda à Constituição permitindo uma avaliação mais transparente e informada do cenário político brasileiro.
+
+                        Desenvolvido por uma equipe comprometida com a transparência e a cidadania ativa, o VERIFICABR disponibiliza informações atualizadas sobre as votações de forma clara e objetiva. A ferramenta está em constante evolução, com melhorias frequentes baseadas nas contribuições de desenvolvedores e especialistas. O código-fonte do VERIFICABR é aberto e pode ser acessado no GitHub, incentivando a colaboração da comunidade para ampliar o impacto positivo no monitoramento das atividades parlamentares.
                      </p>
-                     <p></p>
                   </div>
                </div>
             </div>
@@ -266,7 +267,7 @@
                      <div class="item">
                         <div class="service_box text_align_center">
                            <div class="ser_img">
-                              <figure><img src="images/" alt="Serviço 1 do Software"/></figure>
+                              <figure><img src="{{ url_for('static', filename='images/tabela_dep.png') }}" alt="Serviço 1 do Software"/></figure>
                            </div>
                            <h3>Deputados</h3>
                            <p>Confira todos os deputados brasileiros na página de deputados.
@@ -276,7 +277,7 @@
                      <div class="item">
                         <div class="service_box text_align_center">
                            <div class="ser_img">
-                              <figure><img src="images/" alt="Serviço 2 do Software"/></figure>
+                              <figure><img src="{{ url_for('static', filename='images/tabela_leis.png') }}" alt="Serviço 2 do Software"/></figure>
                            </div>
                            <h3>Projetos de Leis</h3>
                            <p>Confira os projetos de leis dos deputados brasileiros na página de projetos de leis 
@@ -286,10 +287,10 @@
                      <div class="item">
                         <div class="service_box text_align_center">
                            <div class="ser_img">
-                              <figure><img src="images/" alt="Serviço 3 do Software"/></figure>
+                              <figure><img src="{{ url_for('static', filename='images/tabela_pec.png') }}" alt="Serviço 3 do Software"/></figure>
                            </div>
-                           <h3>Relacionamentos entre Deputados</h3>
-                           <p>Crie conexões entre os deputados brasileiros, bem como seus partidos.
+                           <h3>Projeto de Emenda à Constituição</h3>
+                           <p>Confira as PEC's criadas pelos deputados brasileiros na página de projetos de leis.
                            </p>
                         </div>
                      </div>
@@ -325,7 +326,6 @@
                                  <li><a href="about.html">Sobre </a></li>
                                  <li><a href="{{ url_for('projeto_leis') }}">Projeto Leis</a></li>
                                  <li><a href="{{ url_for('deputados') }}">Deputados</a></li>
-                                 <li><a href="blog.html">Conexões</a></li>
                               </ul>
                            </div>
                         </div>
@@ -334,10 +334,8 @@
                               <h3>Serviços</h3>
                               <ul class="menu_bottom">
                                  <li><a href="Javascript:void(0)">Projetos de Leis</a></li>
-                                 <li><a href="Javascript:void(0)">Relacionamentos entre Partidos </a></li>
                                  <li><a href="Javascript:void(0)">Todos os Deputados</a></li>
-                                 <li><a href="Javascript:void(0)">Relacionamento entre Deputados</a></li>
-                                 <li><a href="Javascript:void(0)">Projetos de Leis por Deputado</a></li>
+                                 <li><a href="Javascript:void(0)">Proposta de Emenda à Constituição</a></li>
                               </ul>
                            </div>
                         </div>

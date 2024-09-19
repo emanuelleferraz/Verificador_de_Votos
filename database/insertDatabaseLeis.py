@@ -3,7 +3,7 @@ from databaseDeputados import findAll
 import xmltodict
 from datetime import datetime
 
-with open("database/resultadoPesquisa.xml", 'r', encoding='utf-8') as file:
+with open("database/resultadoPesquisaLeis.xml", 'r', encoding='utf-8') as file:
     conteudo_xml = file.read()
 
 xml_dict = xmltodict.parse(conteudo_xml)
@@ -11,7 +11,6 @@ xml_dict = xmltodict.parse(conteudo_xml)
 dados = xml_dict
 
 list_deputados = list(findAll())
-print(list_deputados)
 
 for i in range(len(dados["proposicoes"]["proposicao"])):
     data_iso = dados["proposicoes"]["proposicao"][i]["dataaprensentacao"]

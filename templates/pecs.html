@@ -9,7 +9,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-   <title>Projetos de Leis</title>
+   <title>Proposta de Emenda à Constituição</title>
    <link rel="icon" href="{{ url_for('static', filename='images/logotipo.png') }}">
    <meta name="keywords" content="">
    <meta name="description" content="">
@@ -77,8 +77,8 @@
                            <a class="nav-link" href="{{ url_for('deputados') }}">Deputados</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="{{ url_for('pecs') }}">Projeto de Emenda à Constituição</a>
-                        </li>
+                            <a class="nav-link" href="{{ url_for('pecs') }}">Projeto de Emenda à Constituição</a>
+                         </li>
                      </ul>
                   </div>
                </nav>
@@ -96,27 +96,26 @@
       <div class="row">
          <div class="col-12">
             <div id="areaLeis" class="border rounded-3 p-5 mt-5 shadow box-area">
-               <h1 style="color: darkgreen;"><strong>Consulte os Projetos de Leis</strong></h1><br>
+               <h1 style="color: darkgreen;"><strong>Consulte as Propostas de Emenda à Constituição - PEC's</strong></h1><br>
                <nav class="navbar bg-body-tertiary">
                   <div class="container-fluid">
                      <div class="search-container">
                         <form class="d-flex" role="search" id="searchForm">
                            <input class="form-control me-3" type="search"
                               placeholder="Buscar por Nome e Data de Apresentação (DD/MM/AAAA)" aria-label="Search"
-                              id="searchInput" autofocus onkeyup="searchLeis()">
+                              id="searchInput" autofocus onkeyup="searchPecs()">
                            <i class="fa fa-search search-icon"></i>
                         </form>
                      </div>
                   </div>
                </nav>
                <ol class="listaLeis">
-                  <!-- Itera sobre as leis vindas do banco de dados -->
-                  {% for lei in leis %}
+                  {% for pec in pecs %}
                   <li class="lei">
-                     <h3 class="nome" style="color: darkgreen;"><strong>{{ lei.name }}</strong></h3>
-                     <span class="autor"><strong>Autor:</strong> {{ lei.deputado }}</span>
-                     <span class="data"><strong>Data:</strong> {{ lei.data }}</span>
-                     <span class="descricao"><strong>Descrição:</strong> {{ lei.description }}</span>
+                     <h3 class="nome" style="color: darkgreen;"><strong> {{ pec.name }}</strong></h3>
+                     <span class="autor"><strong>Autor:</strong> {{ pec.deputado }}</span>
+                     <span class="data"><strong>Data:</strong> {{ pec.data }}</span>
+                     <span class="descricao"><strong>Descrição:</strong> {{ pec.description }}</span>
                      <hr>
                   </li>
                   {% endfor %}
@@ -138,23 +137,23 @@
 
    <!-- Script de busca dinâmica -->
    <script>
-      function searchLeis() {
+      function searchPecs() {
          // Captura o valor digitado no campo de pesquisa e converte para minúsculas
          const input = document.getElementById('searchInput').value.toLowerCase();
 
-         // Seleciona todas as leis na lista
-         const leis = document.querySelectorAll('.listaLeis .lei');
+         // Seleciona todas as pecs na lista
+         const pecs = document.querySelectorAll('.listaLeis .lei');
 
-         // Percorre cada item de lei e verifica se o valor digitado aparece no nome, número ou data
-         leis.forEach(function(lei) {
-            const numeroNome = lei.querySelector('.nome').textContent.toLowerCase(); // Número da Lei e Nome
-            const data = lei.querySelector('.data').textContent.toLowerCase(); // Data
+         // Percorre cada item de pec e verifica se o valor digitado aparece no nome, número ou data
+         pecs.forEach(function(pec) {
+            const numeroNome = pec.querySelector('.nome').textContent.toLowerCase(); // Número da pec e Nome
+            const data = pec.querySelector('.data').textContent.toLowerCase(); // Data
 
             // Verifica se a busca está presente no nome ou na data
             if (numeroNome.includes(input) || data.includes(input)) {
-               lei.style.display = ''; // Exibe o item de lei
+               pec.style.display = ''; // Exibe o item de pec
             } else {
-               lei.style.display = 'none'; // Oculta o item de lei
+               pec.style.display = 'none'; // Oculta o item de lei
             }
          });
       }
