@@ -102,9 +102,11 @@
               </div>
             </div>
           </nav>
+          {% if session.user %}
           <div class="d-flex justify-content-end mb-3">
             <button class="btn btn-primary" data-toggle="modal" data-target="#addDeputadoModal">Adicionar Deputado</button>
           </div>
+          {% endif %}
           <div class="table-container">
             <table class="table table-hover">
               <thead>
