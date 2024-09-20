@@ -1,209 +1,219 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <!-- basic -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- mobile metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-  <!-- site metas -->
-  <title>Deputados</title>
-  <link rel="icon" href="{{ url_for('static', filename='images/logotipo.png') }}">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <!-- bootstrap css -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-  <!-- style css -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/deputados.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <!-- Responsive-->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
-  <!-- fevicon -->
-  <link rel="icon" href="{{ url_for('static', filename='images/fevicon.png') }}" type="image/gif" />
-  <!-- Scrollbar Custom CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.mCustomScrollbar.min.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
-  <!-- Tweaks for older IEs-->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-  <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Deputados</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logotipo.png') }}">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- style css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/deputados.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+    <!-- fevicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/fevicon.png') }}" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.mCustomScrollbar.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
-
 <body class="main-layout">
-  <!-- loader  -->
-  <div class="loader_bg">
-    <div class="loader">
-      <img src="{{ url_for('static', filename='images/loading.gif') }}" alt="Carregando...">
+    <!-- loader -->
+    <div class="loader_bg">
+        <div class="loader">
+            <img src="{{ url_for('static', filename='images/loading.gif') }}" alt="Carregando...">
+        </div>
     </div>
-  </div>
-  <!-- end loader -->
-  <!-- header -->
-  <div class="header">
-    <div class="container-fluid">
-      <div class="row d_flex">
-        <div class="col-xl-1 col-lg-3 col-sm-2 col logo_section">
-          <div class="full">
-            <div class="center-desk">
+    <!-- end loader -->
+    <!-- header -->
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row d_flex">
+                <div class="col-xl-1 col-lg-3 col-sm-2 col logo_section">
+                    <div class="full">
+                        <div class="center-desk"></div>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-9 col-md-10 col-sm-12">
+                    <nav class="navigation navbar navbar-expand-md navbar-dark">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                            <div class="logo">
+                                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
+                            </div>
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ url_for('index') }}">Início</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('projeto_leis') }}">Projetos de Leis</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('deputados') }}">Deputados</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('pecs') }}">Projeto de Emenda à Constituição</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-md-4 re_no">
+                    <ul class="infomaco">
+                        {% if 'user' in session %}
+                    
+                        <button id="logout-button" class="btn btn-primary logout" data-animation="animated bounceInLeft">Logout</button>
+                    
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="col-xl-7 col-lg-9 col-md-10 col-sm-12">
-          <nav class="navigation navbar navbar-expand-md navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsExample04">
-              <div class="logo">
-                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
-              </div>
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ url_for('index') }}">Início</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('projeto_leis') }}">Projetos de Leis</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('deputados') }}">Deputados</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('pecs') }}">Projeto de Emenda à Constituição</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-        <div class="col-md-4 re_no">
-        </div>
-      </div>
     </div>
-  </div>
-  <br>
-  <!-- end header inner -->
-  <!-- end header -->
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div id="areaTabela" class="border rounded-3 p-5 mt-5 shadow box-area">
-          <h1 style="color: darkgreen;"><strong>Consulte Deputados</strong></h1><br>
-          <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-              <div class="search-container">
-                <form class="d-flex" role="search" id="searchForm" onsubmit="return handleSubmit(event)">
-                  <input class="form-control me-3" type="search" placeholder="Buscar por Nome ou Partido" aria-label="Search" id="searchInput" autofocus>
-                  <i class="fa fa-search search-icon"></i>
-                </form>
-              </div>
-            </div>
-          </nav>
-          {% if session.user %}
-          <div class="d-flex justify-content-end mb-3">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#addDeputadoModal">Adicionar Deputado</button>
-          </div>
-          {% endif %}
-          <div class="table-container">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Partido</th>
-                  <th scope="col">Registro</th>
-                  <th scope="col">Ações</th>
-                </tr>
-              </thead>
-              <tbody id="deputadosTable">
-                {% for deputado in deputados %}
-                <tr>
-                  <td>{{ deputado.name }}</td>
-                  <td>{{ deputado.party }}</td>
-                  <td>{{ deputado.record }}</td>
-                  <td>
-                    <a href="{{ url_for('deputados_leis', deputado=deputado.name) }}" class="btn btn-success btn-sm">Projetos de Leis</a>
-                    <a href="{{ url_for('deputados_pecs', deputado=deputado.name) }}" class="btn btn-success btn-sm">PEC's</a>
+    <br>
+    <!-- end header inner -->
+    <!-- end header -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="areaTabela" class="border rounded-3 p-5 mt-5 shadow box-area">
+                    <h1 style="color: darkgreen;"><strong>Consulte Deputados</strong></h1><br>
+                    <nav class="navbar bg-body-tertiary">
+                        <div class="container-fluid">
+                            <div class="search-container">
+                                <form class="d-flex" role="search" id="searchForm">
+                                    <input class="form-control me-3" type="search" placeholder="Buscar por Nome ou Partido" aria-label="Search" id="searchInput" autofocus>
+                                    <i class="fa fa-search search-icon"></i>
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
                     {% if session.user %}
-                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editDeputadoModal" data-name="{{ deputado.name }}" data-party="{{ deputado.party }}" data-record="{{ deputado.record }}">Editar</button>
-                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteDeputadoModal" data-name="{{ deputado.name }}">Excluir</button>
+                    <div class="d-flex justify-content-end mb-3">
+                        <button id="adicionarDep" class="btn btn-primary" data-toggle="modal" data-target="#addDeputadoModal">Adicionar Deputado</button>
+                    </div>
                     {% endif %}
-                  </td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+                    <div class="table-container">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Partido</th>
+                                    <th scope="col">Registro</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="deputadosTable">
+                                {% for deputado in deputados %}
+                                <tr>
+                                    <td>{{ deputado.name }}</td>
+                                    <td>{{ deputado.party }}</td>
+                                    <td>{{ deputado.record }}</td>
+                                    <td>
+                                        <a href="{{ url_for('deputados_leis', deputado=deputado.name) }}" class="btn btn-success btn-sm">Projetos de Leis</a>
+                                        <a href="{{ url_for('deputados_pecs', deputado=deputado.name) }}" class="btn btn-success btn-sm">PEC's</a>
+                                        {% if session.user %}
+                                        <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editDeputadoModal" data-name="{{ deputado.name }}" data-party="{{ deputado.party }}" data-record="{{ deputado.record }}">Editar</button>
+                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteDeputadoModal" data-name="{{ deputado.name }}">Excluir</button>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal Adicionar Deputado -->
+<div class="modal fade" id="addDeputadoModal" tabindex="-1" aria-labelledby="addDeputadoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="addDeputadoModalLabel" style="color: darkgreen;"><strong>Adicionar Deputado</strong></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
           </div>
-        </div>
+          <div class="modal-body">
+              <form id="addDeputadoForm">
+                  <div class="mb-3">
+                      <label for="name" class="form-label">Nome</label>
+                      <input type="text" class="form-control" id="name" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="party" class="form-label">Partido</label>
+                      <input type="text" class="form-control" id="party" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="record" class="form-label">Registro</label>
+                      <input type="text" class="form-control" id="record" required>
+                  </div>
+                  <button id="adicionar" type="submit" class="btn btn-primary">Adicionar</button>
+                  <div id="addDeputadoError" class="text-danger mt-2" style="display: none;"></div>
+              </form>
+          </div>
       </div>
-    </div>
   </div>
+</div>
 
-  <!-- Modal Adicionar Deputado -->
-  <div class="modal fade" id="addDeputadoModal" tabindex="-1" aria-labelledby="addDeputadoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<!-- Modal Editar Deputado -->
+<div class="modal fade" id="editDeputadoModal" tabindex="-1" aria-labelledby="editDeputadoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addDeputadoModalLabel" style="color: darkgreen;"><strong>Adicionar Deputado</strong></h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form id="addDeputadoForm">
-            <div class="mb-3">
-              <label for="name" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="name" required>
-            </div>
-            <div class="mb-3">
-              <label for="party" class="form-label">Partido</label>
-              <input type="text" class="form-control" id="party" required>
-            </div>
-            <div class="mb-3">
-              <label for="record" class="form-label">Registro</label>
-              <input type="text" class="form-control" id="record" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Adicionar</button>
-            <div id="addDeputadoError" class="text-danger mt-2" style="display: none;"></div>
-          </form>
-        </div>
+          <div class="modal-header">
+              <h4 class="modal-title" id="editDeputadoModalLabel" style="color: darkgreen;"><strong>Editar Deputado</strong></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form id="editDeputadoForm">
+                  <input type="hidden" id="editRecord"> <!-- Campo oculto para o registro -->
+                  <input type="hidden" id="oldName"> <!-- Campo oculto para o nome antigo -->
+                  <div class="mb-3">
+                      <label for="editName" class="form-label">Nome</label>
+                      <input type="text" class="form-control" id="editName" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="editParty" class="form-label">Partido</label>
+                      <input type="text" class="form-control" id="editParty" required>
+                  </div>
+                  <button id="salvar" type="submit" class="btn btn-primary">Salvar Alterações</button>
+              </form>
+          </div>
       </div>
-    </div>
   </div>
+</div>
 
-  <!-- Modal Editar Deputado -->
-  <div class="modal fade" id="editDeputadoModal" tabindex="-1" aria-labelledby="editDeputadoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editDeputadoModalLabel">Editar Deputado</h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form id="editDeputadoForm">
-            <input type="hidden" id="editRecord"> <!-- Campo oculto para o registro -->
-            <input type="hidden" id="oldName"> <!-- Campo oculto para o nome antigo -->
-            <div class="mb-3">
-              <label for="editName" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="editName" required>
-            </div>
-            <div class="mb-3">
-              <label for="editParty" class="form-label">Partido</label>
-              <input type="text" class="form-control" id="editParty" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Modal Excluir Deputado -->
   <div class="modal fade" id="deleteDeputadoModal" tabindex="-1" aria-labelledby="deleteDeputadoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteDeputadoModalLabel" style="color: darkgreen;"><strong>Excluir Deputado</strong></h5>
+          <h4 class="modal-title" id="deleteDeputadoModalLabel" style="color: darkgreen;"><strong>Excluir Deputado</strong></h4>
           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -238,27 +248,36 @@
 
   <script>
     $(document).ready(function() {
-      // Adicionar Deputado
-      $('#addDeputadoForm').on('submit', function(event) {
-        event.preventDefault();
-        $.ajax({
-          type: 'POST',
-          url: '{{ url_for("add_deputado") }}',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            name: $('#name').val(),
-            party: $('#party').val(),
-            record: $('#record').val()
-          }),
-          success: function(response) {
-            $('#addDeputadoModal').modal('hide');
-            location.reload(); // Recarrega a página após adição bem-sucedida
-          },
-          error: function(response) {
-            $('#addDeputadoError').text(response.responseJSON.message).show(); // Exibe mensagem de erro
-          }
+            // Filtrar a tabela com base na entrada de busca
+            $('#searchInput').on('input', function() {
+                const value = $(this).val().toLowerCase();
+                $('#deputadosTable tr').filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+
+            // Adicionar Deputado
+            $('#addDeputadoForm').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ url_for("add_deputado") }}',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        name: $('#name').val(),
+                        party: $('#party').val(),
+                        record: $('#record').val()
+                    }),
+                    success: function(response) {
+                        $('#addDeputadoModal').modal('hide');
+                        location.reload(); // Recarrega a página após adição bem-sucedida
+                    },
+                    error: function(response) {
+                        $('#addDeputadoError').text(response.responseJSON.message).show(); // Exibe mensagem de erro
+                    }
+                });
+            });
         });
-      });
 
       // Editar Deputado
       $('#editDeputadoModal').on('show.bs.modal', function(event) {
@@ -320,7 +339,13 @@
           }
         });
       });
-    });
+
+      
+    document.getElementById('logout-button').addEventListener('click', function() {
+      window.location.href = "{{ url_for('logout') }}";
+  });
+
+</script>
   </script>
 </body>
 

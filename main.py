@@ -38,6 +38,7 @@ def projeto_leis():
 
     return render_template("projetoLeis.html", leis=leis_list)
 
+
 @app.route("/deputados_leis")
 def deputados_leis():
 
@@ -144,45 +145,6 @@ def delete_deputado():
     deleteDeputado(name)
     return jsonify({'message': 'Deputado excluído com sucesso!'}), 200
 
-# Adicionar Lei
-@app.route('/add_lei', methods=['POST'])
-def add_lei():
-    data = request.get_json()
-    lei_name = data.get('leiName')
-    description = data.get('description')
-    deputado = data.get('deputado')
-    data_apresentacao = data.get('data')
-
-    # Verificar se a lei já existe
-    lei_exists = findLawByName(lei_name)
-    if lei_exists:
-        return jsonify({'message': 'Lei já cadastrada'}), 400
-
-    insertLaw(lei_name, description, deputado, data_apresentacao)
-    return jsonify({'message': 'Lei adicionada com sucesso!'}), 200
-
-# Editar Lei
-@app.route('/edit_lei', methods=['POST'])
-def edit_lei():
-    data = request.get_json()
-    lei_name = data.get('leiName')
-    new_description = data.get('description')
-
-    lei = findLawByName(lei_name)
-    if not lei:
-        return jsonify({'message': 'Lei não encontrada'}), 404
-
-    updateLawByName(lei_name, new_description)
-    return jsonify({'message': 'Lei atualizada com sucesso!'}), 200
-
-# Excluir Lei
-@app.route('/delete_lei', methods=['POST'])
-def delete_lei():
-    data = request.get_json()
-    lei_name = data.get('leiName')
-
-    deleteLaw(lei_name)
-    return jsonify({'message': 'Lei excluída com sucesso!'}), 200
 
 if __name__ in "__main__":
     app.run(debug=True, port=20000)
