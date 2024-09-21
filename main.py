@@ -1,22 +1,11 @@
 import sys, os 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'database')))
 from flask import Flask, render_template, session, flash, request, redirect, url_for, jsonify
-from database.databaseDeputados import findAllDeputados
-from database.databaseDeputados import insertDeputado
-from database.databaseDeputados import findDeputadoByName
-from database.databaseDeputados import updateDeputadoByName
-from database.databaseDeputados import deleteDeputado
+from database.databaseDeputados import findAllDeputados, deleteDeputado, updateDeputadoByName, findDeputadoByName, insertDeputado
+from database.databaseProjetos import findAllLaws, findLawsByDeputadoName, deleteLaw, updateLawByName, insertLaw, findLawByName
+from database.databasePEC import findAllPECs, findPECsByDeputadoName
 from database.databaseAdministrador import buscar_usuario
-from database.databaseProjetos import findAllLaws
-from database.databaseProjetos import findLawByName
-from database.databaseProjetos import insertLaw
-from database.databaseProjetos import updateLawByName
-from database.databaseProjetos import deleteLaw
-from database.databaseProjetos import findLawsByDeputadoName
-from database.databasePEC import findAllPECs
-from database.databasePEC import findPECsByDeputadoName
-
-                                       
+                 
 #Inicialização
 app = Flask(__name__)
 app.secret_key = "minha_chave"
@@ -60,7 +49,6 @@ def deputados_pecs():
 
     return render_template("deputadosPecs.html", pecs=pecs_do_deputado, deputado=deputado_name)
 
-    
 @app.route("/login")
 def login():
     return render_template("login.html")
@@ -92,16 +80,6 @@ def logout():
     session.pop('user_id', None)
     return redirect(url_for('index'))
 
-@app.route("/adm")
-def adm():
-    # Busca dados de deputados e leis para exibir na página de administração
-    deputados_list = findAllDeputados()
-    leis_list = findAllLaws()
-    pec_list = findAllPECs()
-    
-    # Renderiza a página de administração passando os dados
-    return render_template("administracao.html", deputados=deputados_list, leis=leis_list, pecs=pec_list)
-
 @app.route('/add_deputado', methods=['POST'])
 def add_deputado():
     data = request.get_json()
@@ -130,10 +108,9 @@ def edit_deputado():
         if deputado_existente:
             return jsonify({'message': 'Deputado já cadastrado'}), 400
 
-    # Atualizar o deputado com o novo nome e partido
+    
     updateDeputadoByName(old_name, new_name, new_party)
     return jsonify({'message': 'Deputado atualizado com sucesso!'}), 200
-
 
 # Excluir Deputado
 @app.route('/delete_deputado', methods=['POST'])
@@ -141,7 +118,7 @@ def delete_deputado():
     data = request.get_json()
     name = data.get('name')
     
-    # Excluir o deputado pelo nome
+    
     deleteDeputado(name)
     return jsonify({'message': 'Deputado excluído com sucesso!'}), 200
 
