@@ -141,11 +141,15 @@ body{
 }
 
 #salvar{
+    background-color: darkgreen;
+    border-color: darkgreen;
     width: 165px;
     height: 40px;
 }
 
 #adicionar{
+    background-color: darkgreen;
+    border-color: darkgreen;
     width: 125px;
     height: 40px;
 }

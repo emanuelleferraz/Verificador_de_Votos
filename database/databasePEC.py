@@ -10,11 +10,11 @@ db = client.db('informations_Deputados_and_Projetos', username='root', password=
 # Selecionar a coleção
 collection = db.collection('pec')
 
-def insertPEC(name, description, deputado, data, array_deputados): 
+def insertPEC(name, description, data, array_deputados): 
     document = {
     "name": name,
     "description": description,
-    "deputado": deputado,
+    "deputado": '; '.join(array_deputados),
     "data": data
     }
     collection.insert(document)
@@ -22,7 +22,7 @@ def insertPEC(name, description, deputado, data, array_deputados):
     list_deputados = list(findAll())
 
     for dep in array_deputados:
-        if deputado in list_deputados:
+        if dep in list_deputados:
             updateDeputadoPec(name, dep) 
 
 def deletePEC(name):
@@ -40,13 +40,17 @@ def findPECByName(name):
 
 def updatePECByName(description, name):
     PEC_to_update = findPECByName(name)
+
+    # Verifica se a PEC foi encontrada
+    if not PEC_to_update:
+        raise ValueError("PEC não encontrada.")  # ou retornar um erro apropriado
+
     key_to_update = PEC_to_update[0]["_key"]
     document_to_update = {
         "_key": key_to_update,
         "description": description
     }
     collection.update(document_to_update)
-
 def findAllPECs():
     cursor = db.aql.execute(
         'FOR l IN pec RETURN l'
@@ -74,3 +78,28 @@ def findPECsByDeputadoName(deputado_name):
     )
     PECs = list(cursor)
     return PECs
+
+def updatePEC(old_name, new_name, new_description, new_data):
+    # Verificar se a PEC existe
+    pec_to_update = findPECByName(old_name)
+    if not pec_to_update:
+        raise ValueError("PEC não encontrada.")
+
+    # Preparar o documento para atualização
+    key_to_update = pec_to_update[0]["_key"]
+    document_to_update = {
+        "_key": key_to_update,
+        "name": new_name if new_name else old_name,  # Mantém o nome antigo se não houver novo
+        "description": new_description if new_description else pec_to_update[0]["description"],  # Mantém a descrição antiga se não houver nova
+        "data": new_data if new_data else pec_to_update[0]["data"]  # Mantém a data antiga se não houver nova
+    }
+
+    # Atualiza a PEC na coleção
+    collection.update(document_to_update)
+
+    # Se o nome foi alterado, atualize os deputados relacionados
+    if new_name and new_name != old_name:
+        list_deputados = list(findAll())
+        for dep in pec_to_update[0]["deputado"].strip().split("; "):
+            if dep in list_deputados:
+                updateDeputadoPec(new_name, dep)  # Atualiza o deputado com o novo nome da PEC

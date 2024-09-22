@@ -34,14 +34,27 @@ def findLawByName(name):
     law = list(cursor)
     return law
 
-def updateLawByName(description, name):
-    law_to_update = findLawByName(name)
+def updateLawByName(new_name, new_description, new_data_apresentacao, old_name):
+    # Encontrar a lei pelo nome atual
+    law_to_update = findLawByName(old_name)
+    
+    if not law_to_update:
+        return None  # Lei não encontrada
+    
+    # Pegar a chave do documento
     key_to_update = law_to_update[0]["_key"]
+    
+    # Criar o novo documento com os dados atualizados (sem alterar o deputado)
     document_to_update = {
         "_key": key_to_update,
-        "description": description
+        "name": new_name,
+        "description": new_description,
+        "data": new_data_apresentacao
     }
+    
+    # Atualizar o documento no banco de dados
     collection.update(document_to_update)
+    return document_to_update
 
 def findAllLaws():
     cursor = db.aql.execute(

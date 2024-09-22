@@ -142,5 +142,12 @@ def findAllPecs():
     pecs = list(cursor)
     return pecs
 
+def are_valid_deputados(deputados):
+    # Suponha que você tenha uma função que verifica se um deputado existe
+    for deputado in deputados:
+        if not findDeputadoByName(deputado):  # Esta função deve retornar True se o deputado existir
+            return False
+    return True
+
 
 

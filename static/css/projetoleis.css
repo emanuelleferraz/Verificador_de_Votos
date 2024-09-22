@@ -4,3 +4,58 @@
     overflow-y: auto;
     padding-right: 10px; /* Para evitar que o texto seja cortado pelo scrollbar */
  }
+
+ .modal-dialog {
+    max-width: 500px; /* Ajuste a largura conforme necessário */
+    margin: 1.75rem auto; /* Margem para centralizar o modal na tela */
+}
+  
+.modal-body {
+    max-height: calc(100vh - 150px); /* Ajusta a altura do modal */
+    overflow-y: auto; /* Adiciona rolagem se o conteúdo for maior */
+}
+
+#lawName,
+#deputadoName,
+#lawDate{
+    width: 80%; /* Ajuste a largura conforme necessário */
+    height: 30px; /* Ajuste a altura conforme necessário */
+    font-size: 14px; /* Reduz o tamanho da fonte */
+}
+
+#lawDescription{
+    width: 80%;
+    height: 30px;
+}
+
+#adicionar{
+    background-color: darkgreen;
+    border-color: darkgreen;
+    width: 125px;
+    height: 40px;
+}
+
+#editLawName,
+#editDeputadoName,
+#editLawDate{
+    width: 80%; /* Ajuste a largura conforme necessário */
+    height: 30px; /* Ajuste a altura conforme necessário */
+    font-size: 14px; /* Reduz o tamanho da fonte */
+}
+
+#editLawDescription{
+    width: 80%;
+    height: 50px;
+    font-size: 14px;
+}
+
+#salvar{
+    background-color: darkgreen;
+    border-color: darkgreen;
+    width: 165px;
+    height: 40px;
+}
+
+#editar{
+    margin-right: 5px;
+}
