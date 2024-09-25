@@ -58,14 +58,14 @@
                      </button>
                      <div class="collapse navbar-collapse" id="navbarsExample04">
                         <div class="logo">
-                           <a href="index.html"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
+                           <a  href="{{ url_for('index') }}"><img id="logoHeader" src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
                         </div>
                         <ul class="navbar-nav mr-auto">
                            <li class="nav-item active">
-                              <a class="nav-link" href="index.html">Início</a>
+                              <a class="nav-link" href="{{ url_for('index') }}">Início</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="about.html">Sobre</a>
+                              <a class="nav-link" href="#sobre">Sobre</a>
                            </li>
                            <li class="nav-item">
                               <a class="nav-link" href="{{ url_for('projeto_leis') }}">Projetos de Leis</a>
@@ -74,10 +74,7 @@
                               <a class="nav-link" href="{{ url_for('deputados') }}">Deputados</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="{{ url_for('conexoes') }}">Conexões</a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" style="background: transparent;" href="Javascript:void(0)"><i class="fa fa-search"></i></a>
+                              <a class="nav-link" href="{{ url_for('pecs') }}">Projeto de Emenda à Constituição</a>
                            </li>
                         </ul>
                      </div>
@@ -85,8 +82,19 @@
                </div>
                <div class="col-md-4 re_no">
                   <ul class="infomaco">
+
                      <li class="telefone"><i class="fa fa-phone" aria-hidden="true"></i> +01 1234567890</li>
+                     
+                     {% if 'user' in session %}
+
+                     <button id="logout-button" class="btn btn-primary logout" data-animation="animated bounceInLeft">Logout</button>
+
+                    {% else %}
+                  
                      <button id="login-button" class="btn btn-primary login" data-animation="animated bounceInLeft">Login</button>
+
+                     {% endif %}
+
                   </ul>
                </div>
             </div>
@@ -116,19 +124,19 @@
                                        <div class="zon_text">
                                           <h1 data-animation="animated bounceInLeft">
                                              Verifique<br>
-                                             Votos
+                                             PEC's
                                           </h1>
                                           <p data-animation="animated bounceInLeft">
-                                             There are many variations of passages of Loremalteration in some form, by injected humour, or randomised 
+                                             Acompanhe os Projetos de Emenda à Constituição em andamento.
                                           </p>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Read More</button>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Get A Quote</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Leia Mais</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Confira as PEC's</button>
                                        </div>
                                     </div>
                                     <div class="col-md-7">
                                        <div class="coff_img">
                                         <figure>
-                                            <img src="{{ url_for('static', filename='images/deputados.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos.">
+                                            <img src="{{ url_for('static', filename='images/deputados.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos." class="imagemSlider" >
                                         </figure>
                                        </div>
                                     </div>
@@ -142,20 +150,19 @@
                                     <div class="col-md-5">
                                        <div class="zon_text">
                                           <h1 data-animation="animated bounceInLeft">
-                                             Crie<br>
-                                             Conexões
+                                             Veja<br>
+                                             Deputados
                                           </h1>
                                           <p data-animation="animated bounceInLeft">
-                                             There are many variations of passages of Loremalteration in some form, by injected humour, or randomised 
-                                          </p>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Read More</button>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Get A Quote</button>
+                                             Confira os Projetos de Leis e Projetos de Emenda na Constituição dos deputados.                                           </p>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Leia Mais</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Veja Deputados</button>
                                        </div>
                                     </div>
                                     <div class="col-md-7">
                                        <div class="coff_img">
                                         <figure>
-                                            <img src="{{ url_for('static', filename='images/deputados.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos.">
+                                            <img src="{{ url_for('static', filename='images/verificadep.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos." class="imagemSlider" >
                                         </figure>
                                        </div>
                                     </div>
@@ -169,20 +176,20 @@
                                     <div class="col-md-5">
                                        <div class="zon_text">
                                           <h1 data-animation="animated bounceInLeft">
-                                             Veja<br>
+                                             Verifique<br>
                                              Leis
                                           </h1>
                                           <p data-animation="animated bounceInLeft">
-                                             There are many variations of passages of Loremalteration in some form, by injected humour, or randomised 
+                                             Acompanhe os projetos de lei em andamento. 
                                           </p>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Read More</button>
-                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Get A Quote</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Leia Mais</button>
+                                          <button class="btn btn-primary  read_more bounceInLeft" data-animation="animated bounceInLeft">Confira as leis</button>
                                        </div>
                                     </div>
                                     <div class="col-md-7">
                                        <div class="coff_img">
                                         <figure>
-                                            <img src="{{ url_for('static', filename='images/deputados.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos.">
+                                            <img src="{{ url_for('static', filename='images/verificaleis.png') }}" alt="Desenho de dois deputados, um homem e uma mulher, numa mesa sentados dando as mãos." class="imagemSlider3">
                                         </figure>
                                        </div>
                                     </div>
@@ -207,7 +214,7 @@
       </div>
       <!-- end banner -->
       <!-- about -->
-      <div class="about">
+      <div id="sobre" class="about">
          <div class="container">
             <div class="row d_flex grid">
                <div class="col-md-6">
@@ -219,12 +226,11 @@
                </div>
                <div class="col-md-6 order1">
                   <div class="titlepage text_align_left">
-                     <h2>Sobre o VerificaBR</h2>
-                     <p>sing 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors  
+                     <h2 class="aboutTitulo">Sobre o VerificaBR</h2><br>
+                     <p  style="text-align: justify;">O Brasil realiza um grande número de votações na Câmara dos Deputados, mas o acesso a essas informações ainda é complexo para a maioria da população. O VERIFICABR foi criado para simplificar esse processo, oferecendo uma ferramenta intuitiva e acessível para acompanhar o desempenho dos deputados. Com o VERIFICABR, os cidadãos podem facilmente encontrar seus candidatos eleitos e monitorar sua atuação, bem como a criação de seus projetos de leis e Propostas de Emenda à Constituição permitindo uma avaliação mais transparente e informada do cenário político brasileiro.
+
+                        Desenvolvido por uma equipe comprometida com a transparência e a cidadania ativa, o VERIFICABR disponibiliza informações atualizadas sobre projetos de lei de forma clara e objetiva. A ferramenta está em constante evolução, com melhorias frequentes baseadas nas contribuições de desenvolvedores e especialistas. O código-fonte do VERIFICABR é aberto e pode ser acessado no GitHub, incentivando a colaboração da comunidade para ampliar o impacto positivo no monitoramento das atividades parlamentares.
                      </p>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ullamcorper bibendum turpis ac lobortis. Integer malesuada ullamcorper tristique. Suspendisse sed mollis lectus, eu sollicitudin risus. Sed neque eros, accumsan fringilla tincidunt eget, interdum a erat. Suspendisse faucibus vestibulum dolor vitae pellentesque. Nullam ac enim sodales, posuere quam in, feugiat magna. Pellentesque vel varius tellus. Vestibulum tempor purus a magna viverra, in tincidunt lectus laoreet. Donec egestas dictum molestie. Aliquam tempus eget odio dictum condimentum. Proin pretium ut metus sed feugiat. Nunc convallis diam vitae blandit euismod. Quisque consequat tincidunt augue, a vehicula diam luctus in.
-                     </p>
-                     <p></p>
                   </div>
                </div>
             </div>
@@ -238,7 +244,7 @@
                <div class="col-md-12">
                   <div class="titlepage text_align_center">
                      <h2>Serviços</h2>
-                     <p>sing 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors 
+                     <p>Através do VerificaBR você consegue visualizar todos os deputados, projetos de leis que cada deputado criou e através da página de conexões você conseguirá criar conexões entre os deputados e partidos.
                      </p>
                   </div>
                </div>
@@ -250,33 +256,30 @@
                      <div class="item">
                         <div class="service_box text_align_center">
                            <div class="ser_img">
-                              <figure><img src="images/" alt="Serviço 1 do Software"/></figure>
+                              <figure><img src="{{ url_for('static', filename='images/tabela_dep.png') }}" alt="Serviço 1 do Software"/></figure>
                            </div>
-                           <h3>Votos de Deputados</h3>
-                           <p>Many desktop publishing packages and
-                              web page editors 
+                           <h3>Deputados</h3>
+                           <p>Confira todos os deputados brasileiros na página de deputados.
                            </p>
                         </div>
                      </div>
                      <div class="item">
                         <div class="service_box text_align_center">
                            <div class="ser_img">
-                              <figure><img src="images/" alt="Serviço 2 do Software"/></figure>
+                              <figure><img src="{{ url_for('static', filename='images/tabela_leis.png') }}" alt="Serviço 2 do Software"/></figure>
                            </div>
                            <h3>Projetos de Leis</h3>
-                           <p>Many desktop publishing packages and
-                              web page editors 
+                           <p>Confira os projetos de leis dos deputados brasileiros na página de projetos de leis 
                            </p>
                         </div>
                      </div>
                      <div class="item">
                         <div class="service_box text_align_center">
                            <div class="ser_img">
-                              <figure><img src="images/" alt="Serviço 3 do Software"/></figure>
+                              <figure><img src="{{ url_for('static', filename='images/tabela_pec.png') }}" alt="Serviço 3 do Software"/></figure>
                            </div>
-                           <h3>Relacionamentos entre Partidos</h3>
-                           <p>Many desktop publishing packages and
-                              web page editors 
+                           <h3>Projeto de Emenda à Constituição</h3>
+                           <p>Confira as PEC's criadas pelos deputados brasileiros na página de projetos de leis.
                            </p>
                         </div>
                      </div>
@@ -308,11 +311,10 @@
                            <div class="infoma text_align_left">
                               <h3>Menu</h3>
                               <ul class="menu_bottom">
-                                 <li><a href="index.html">Inicial</a></li>
+                                 <li><a href="{{ url_for('index') }}">Inicial</a></li>
                                  <li><a href="about.html">Sobre </a></li>
-                                 <li><a href="serviec.html">Projeto Leis</a></li>
+                                 <li><a href="{{ url_for('projeto_leis') }}">Projeto Leis</a></li>
                                  <li><a href="{{ url_for('deputados') }}">Deputados</a></li>
-                                 <li><a href="blog.html">Conexões</a></li>
                               </ul>
                            </div>
                         </div>
@@ -321,10 +323,8 @@
                               <h3>Serviços</h3>
                               <ul class="menu_bottom">
                                  <li><a href="Javascript:void(0)">Projetos de Leis</a></li>
-                                 <li><a href="Javascript:void(0)">Relacionamentos entre Partidos </a></li>
-                                 <li><a href="Javascript:void(0)">Votos de Deputados</a></li>
-                                 <li><a href="Javascript:void(0)">Lorem Ipsum</a></li>
-                                 <li><a href="Javascript:void(0)">Lorem Ipsum</a></li>
+                                 <li><a href="Javascript:void(0)">Todos os Deputados</a></li>
+                                 <li><a href="Javascript:void(0)">Proposta de Emenda à Constituição</a></li>
                               </ul>
                            </div>
                         </div>
@@ -341,7 +341,7 @@
                            <li><a href="Javascript:void(0)"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
                         </ul>
                         <ul class="conta">
-                           <li><i class="fa fa-map-marker" aria-hidden="true"></i>Localização 
+                           <li><i class="fa fa-map-marker" aria-hidden="true"></i>Cruzeiro Celeste, João Monlevade-MG 
                            </li>
                            <li><i class="fa fa-phone" aria-hidden="true"></i>Chame +01 1234567890</li>
                            <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> verifica.br@gmail.com</a></li>
@@ -354,7 +354,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-12">
-                        <p>© 2020 All Rights Reserved.  <a href="https://html.design/">VerificaBR</a></p>
+                        <p>© 2024 All Rights Reserved.  <a href="https://html.design/">VerificaBR</a></p>
                      </div>
                   </div>
                </div>
@@ -376,7 +376,17 @@
         document.getElementById('login-button').addEventListener('click', function() {
             window.location.href = "{{ url_for('login') }}";
         });
-    </script>
+
+        
+   </script>
+
+   <script>
+
+      document.getElementById('logout-button').addEventListener('click', function() {
+            window.location.href = "{{ url_for('logout') }}";
+        });
+
+   </script>
     
     </body>   
 </html>

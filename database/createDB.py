@@ -21,3 +21,6 @@ if not db.has_collection('deputados'):
 if not db.has_collection('projetos_de_lei'):
     db.create_collection('projetos_de_lei')
 
+if not db.has_collection('pec'):
+    db.create_collection('pec')
+

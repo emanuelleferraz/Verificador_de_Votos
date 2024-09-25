@@ -1,0 +1,117 @@
+.container{
+    padding: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    margin-top: 30px;
+}
+
+#areaLeis{
+    background-color: #fff;
+    border-radius: 7px;
+}
+
+.box-area {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+ .d-flex{
+    padding-bottom: 10px;
+}
+
+.d-flex input{
+    border: 1px solid darkgreen;
+}
+
+.d-flex input:focus {
+    border: 1px solid darkgreen;
+    color: darkgreen;
+}
+
+.form-control{
+    width: 1200px;
+}
+
+.container-fluid{
+    border: 2px solid #0000;
+}
+
+.form-control{
+    padding-left: 3px;
+}
+
+.search-container {
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Ajuste conforme necessário */
+  }
+
+#searchInput {
+    border: 2px solid #007bff;
+    /* Borda destacada */
+    border-radius: 25px;
+    /* Borda arredondada */
+    padding: 10px 20px;
+    /* Espaçamento interno */
+    font-size: 16px;
+    /* Tamanho da fonte */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra leve */
+    outline: none;
+    /* Remove o contorno padrão ao focar */
+}
+
+#searchInput:focus {
+    border-color: #0056b3;
+    /* Cor da borda ao focar */
+    box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.2);
+    /* Sombra ao focar */
+}
+
+.search-icon {
+    position: absolute;
+    right: 20px; /* Aumenta a distância da borda direita */
+    top: 45%; /* Move o ícone para cima */
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    color: #007bff; /* Cor do ícone */
+    font-size: 20px; /* Tamanho do ícone */
+  }
+
+
+.navbar-nav .nav-link {
+    text-decoration: underline;
+}
+
+.listaLeis {
+    width: 90%; /* Define a largura da lista como 90% da box-area */
+    margin: 0 auto; /* Centraliza a lista horizontalmente */
+    padding: 20px; /* Adiciona espaçamento interno */
+}
+
+.lei {
+    margin-bottom: 20px; /* Adiciona espaçamento entre as leis */
+}
+
+.lei h3 {
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+}
+
+.lei .data {
+    display: block; /* Faz a descrição ocupar uma linha inteira */
+    margin-top: 5px; /* Adiciona espaçamento acima da descrição */
+}
+
+.lei .descricao {
+    display: block; /* Faz a descrição ocupar uma linha inteira */
+    margin-top: 5px; /* Adiciona espaçamento acima da descrição */
+}
+
+hr {
+    border: 1px solid darkgreen; /* Personaliza o divisor */
+    margin-top: 20px; /* Espaçamento acima do hr */
+}

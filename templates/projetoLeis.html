@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+   <!DOCTYPE html>
+   <html lang="pt-br">
+
    <head>
       <!-- basic -->
       <meta charset="utf-8">
@@ -8,87 +9,361 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>VerificaBR</title>
+      <title>Projetos de Leis</title>
       <link rel="icon" href="{{ url_for('static', filename='images/logotipo.png') }}">
-      <meta name="keywords" content="">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- bootstrap css -->
       <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-      <!-- style css -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/leis.css') }}">
       <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-      <!-- Responsive-->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/projetoleis.css') }}">
       <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
-      <!-- fevicon -->
-      <link rel="icon" href="{{ url_for('static', filename='images/fevicon.png') }}" type="image/gif" />
-      <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.mCustomScrollbar.min.css') }}">
       <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
-      <!-- Tweaks for older IEs-->
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
-   <!-- body -->
+
    <body class="main-layout">
-      <!-- loader  -->
+      <!-- loader -->
       <div class="loader_bg">
-        <div class="loader">
-            <img src="{{ url_for('static', filename='images/loading.gif') }}" alt="Carregando...">
-        </div>
+         <div class="loader">
+               <img src="{{ url_for('static', filename='images/loading.gif') }}" alt="Carregando...">
+         </div>
       </div>
       <!-- end loader -->
+
       <!-- header -->
       <div class="header">
          <div class="container-fluid">
-            <div class="row d_flex">
-               <div class="col-xl-1 col-lg-3 col-sm-2 col logo_section">
-                  <div class="full">
-                     <div class="center-desk">
+               <div class="row d_flex">
+                  <div class="col-xl-1 col-lg-3 col-sm-2 col logo_section">
+                     <div class="full">
+                           <div class="center-desk"></div>
                      </div>
                   </div>
+                  <div class="col-xl-7 col-lg-9 col-md-10 col-sm-12">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark">
+                           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                           </button>
+                           <div class="collapse navbar-collapse" id="navbarsExample04">
+                              <div class="logo">
+                                 <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
+                              </div>
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="nav-item active">
+                                       <a class="nav-link" href="{{ url_for('index') }}">Início</a>
+                                 </li>
+                                 <li class="nav-item">
+                                       <a class="nav-link" href="{{ url_for('projeto_leis') }}">Projetos de Leis</a>
+                                 </li>
+                                 <li class="nav-item">
+                                       <a class="nav-link" href="{{ url_for('deputados') }}">Deputados</a>
+                                 </li>
+                                 <li class="nav-item">
+                                       <a class="nav-link" href="{{ url_for('pecs') }}">Projeto de Emenda à Constituição</a>
+                                 </li>
+                              </ul>
+                           </div>
+                     </nav>
+                  </div>
                </div>
-               <div class="col-xl-7 col-lg-9 col-md-10 col-sm-12">
-                  <nav class="navigation navbar navbar-expand-md navbar-dark ">
-                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                     <span class="navbar-toggler-icon"></span>
-                     </button>
-                     <div class="collapse navbar-collapse" id="navbarsExample04">
-                        <div class="logo">
-                           <a href="index.html"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logotipo VerificaBR"></a>
-                        </div>
-                        <ul class="navbar-nav mr-auto">
-                           <li class="nav-item active">
-                              <a class="nav-link" href="index.html">Início</a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" href="about.html">Sobre</a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" href="service.html">Projetos de Leis</a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" href="testimonial.html">Deputados</a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" href="blog.html">Conexões</a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" style="background: transparent;" href="Javascript:void(0)"><i class="fa fa-search"></i></a>
-                           </li>
-                        </ul>
+         </div>
+      </div>
+      <br>
+      <!-- end header -->
+
+      <div class="container">
+         <div class="row">
+               <div class="col-12">
+                  <div id="areaLeis" class="border rounded-3 p-5 mt-5 shadow box-area">
+                     <h1 style="color: darkgreen;"><strong>Consulte os Projetos de Leis</strong></h1><br>
+                     
+                     {% if 'user' in session %}
+                     <!-- Botão de Adicionar Projeto de Lei -->
+                     <div class="d-flex justify-content-end">
+                           <button class="btn btn-success mb-3" data-toggle="modal" data-target="#addLawModal">
+                              <i class="fas fa-plus"></i> Adicionar Projeto de Lei
+                           </button>
                      </div>
-                  </nav>
+
+                     {% endif %}
+
+                     <nav class="navbar bg-body-tertiary">
+                           <div class="container-fluid">
+                              <div class="search-container">
+                                 <form class="d-flex" role="search" id="searchForm">
+                                       <input class="form-control me-3" type="search" placeholder="Buscar por Nome e Data de Apresentação (DD/MM/AAAA)" aria-label="Search" id="searchInput" autofocus onkeyup="searchLeis()">
+                                       <i class="fas fa-search search-icon"></i>
+                                 </form>
+                              </div>
+                           </div>
+                     </nav>
+                     <ol class="listaLeis">
+                           <!-- Itera sobre as leis vindas do banco de dados -->
+                           {% for lei in leis %}
+                           <li class="lei">
+                              <div class="d-flex justify-content-between align-items-start">
+                                 <div>
+                                       <h3 class="nome" style="color: darkgreen;"><strong>{{ lei.name }}</strong></h3>
+                                       <span class="autor"><strong>Autor:</strong> {{ lei.deputado }}</span><br>
+                                       <span class="data"><strong>Data:</strong> {{ lei.data }}</span><br>
+                                       <span class="descricao"><strong>Descrição:</strong> {{ lei.description }}</span>
+                                 </div>
+
+                                 {% if 'user' in session %} 
+                                 <div class="btn-group">
+                                       <!-- Botão de Editar Projeto de Lei -->
+                                       <button id="editar" class="btn btn-warning" data-toggle="modal" data-target="#editLawModal" data-name="{{ lei.name }}" data-description="{{ lei.description }}" data-deputado="{{ lei.deputado }}" data-data="{{ lei.data }}" data-old-name="{{ lei.name }}">
+                                          <i class="fas fa-edit"></i> Editar
+                                       </button>
+                                       <!-- Botão de Excluir Projeto de Lei -->
+                                       <button class="btn btn-danger" data-toggle="modal" data-target="#deleteLawModal" data-name="{{ lei.name }}">
+                                          <i class="fas fa-trash-alt"></i> Excluir
+                                       </button>
+                                 </div>
+
+                                 {% endif %}
+                              </div>
+                              <hr>
+                           </li>
+                           {% endfor %}
+                     </ol>
+                  </div>
                </div>
-               <div class="col-md-4 re_no">
-                  <ul class="infomaco">
-                  </ul>
+         </div>
+      </div>
+
+      <!-- Modal Adicionar Lei -->
+      <div class="modal fade" id="addLawModal" tabindex="-1" aria-labelledby="addLawModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="addLawModalLabel" style="color: darkgreen;"><strong>Adicionar Projeto de Lei</strong></h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <form id="addLawForm">
+                        <div class="form-group">
+                              <label for="lawName">Nome da Lei</label>
+                              <input type="text" class="form-control" id="lawName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                              <label for="lawDescription">Descrição</label>
+                              <textarea class="form-control" id="lawDescription" name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                              <label for="deputadoName">Deputado</label>
+                              <input type="text" class="form-control" id="deputadoName" name="deputado" required>
+                        </div>
+                        <div class="form-group">
+                              <label for="lawDate">Data de Apresentação</label>
+                              <input type="date" class="form-control" id="lawDate" name="data" required>
+                        </div>
+                        <button id="adicionar" type="submit" class="btn btn-primary">Adicionar Lei</button>
+                     </form>
+                  </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Modal Editar Lei -->
+      <div class="modal fade" id="editLawModal" tabindex="-1" aria-labelledby="editLawModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="editLawModalLabel" style="color: darkgreen;"><strong>Editar Projeto de Lei</strong></h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <form id="editLawForm">
+                           <div class="form-group">
+                              <label for="editLawName">Novo Nome da Lei</label>
+                              <input type="text" class="form-control" id="editLawName" name="new_name" required>
+                           </div>
+                           <div class="form-group">
+                              <label for="editLawDescription">Descrição</label>
+                              <textarea class="form-control" id="editLawDescription" name="description" required></textarea>
+                           </div>
+                           <div class="form-group">
+                              <label for="editDeputadoName">Deputado</label>
+                              <input type="text" class="form-control" id="editDeputadoName" name="deputado" required>
+                           </div>
+                           <div class="form-group">
+                              <label for="editLawDate">Data de Apresentação</label>
+                              <input type="date" class="form-control" id="editLawDate" name="data" required>
+                           </div>
+                           <button id="salvar" type="submit" class="btn btn-primary">Salvar Alterações</button>
+                     </form>
+                  </div>
+               </div>
+         </div>
+      </div>
+
+      <!-- Modal Excluir Lei -->
+      <div class="modal fade" id="deleteLawModal" tabindex="-1" aria-labelledby="deleteLawModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="deleteLawModalLabel" style="color: darkgreen;"><strong>Excluir Projeto de Lei</strong></h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <p>Tem certeza de que deseja excluir esta lei?</p>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                     <button type="button" class="btn btn-danger" id="confirmDelete">Excluir</button>
+                  </div>
+               </div>
+         </div>
+      </div>
+
+      <!-- Modal Mensagem -->
+      <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                     <h5 class="modal-title" id="messageModalLabel">Mensagem</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body" id="modalMessageBody">
+                     <!-- Mensagem será inserida aqui -->
+               </div>
+               <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                </div>
             </div>
          </div>
       </div>
-      <!-- end header inner -->
-      <!-- end header -->
+
+      <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
+      <script>
+
+         // Função para adicionar Projeto de Lei
+         $('#addLawForm').on('submit', function (e) {
+            e.preventDefault();
+            const formData = {
+               name: $('#lawName').val(),
+               description: $('#lawDescription').val(),
+               deputado: $('#deputadoName').val(),
+               data: $('#lawDate').val()
+            };
+            $.ajax({
+               type: 'POST',
+               url: '/add_lei',
+               contentType: 'application/json',
+               data: JSON.stringify(formData),
+               success: function () {
+                     location.reload();
+               },
+               error: function (jqXHR) {
+                     let errorMessage = 'Erro ao adicionar a lei.';
+                     if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
+                        errorMessage = jqXHR.responseJSON.error; // Aqui você extrai a mensagem de erro
+                     }
+                     alert(errorMessage);
+               }
+            });
+         });
+
+
+         // Função para carregar o modal de edição com os dados corretos
+         $('#editLawModal').on('show.bs.modal', function (event) {
+               var button = $(event.relatedTarget);
+               var oldName = button.data('name'); // Nome atual
+               var description = button.data('description');
+               var deputado = button.data('deputado');
+               var data = button.data('data');
+
+               var modal = $(this);
+               modal.find('#editLawName').val(oldName); // O novo nome será o que o usuário editar
+               modal.find('#editLawDescription').val(description);
+               modal.find('#editDeputadoName').val(deputado);
+               modal.find('#editLawDate').val(data);
+               modal.find('#editLawName').data('old-name', oldName); // Armazenar o nome atual
+         });
+
+         // Função para submeter o formulário de edição
+         $('#editLawForm').on('submit', function (e) {
+               e.preventDefault();
+               const newName = $('#editLawName').val(); // Novo nome
+               const oldName = $('#editLawName').data('old-name'); // Nome atual
+               const formData = {
+                  name: oldName,
+                  new_name: newName,
+                  description: $('#editLawDescription').val(),
+                  deputado: $('#editDeputadoName').val(),
+                  data: $('#editLawDate').val()
+               };
+               $.ajax({
+                  type: 'POST',
+                  url: '/edit_lei',
+                  contentType: 'application/json',
+                  data: JSON.stringify(formData),
+                  success: function () {
+                     location.reload();
+                  },
+                  error: function (jqXHR) {
+                     alert('Erro ao editar a lei: ' + jqXHR.responseText);
+                  }
+               });
+         });
+
+         let lawToDelete; 
+
+         // Função para carregar o modal de exclusão com os dados corretos
+         $('#deleteLawModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            lawToDelete = button.data('name'); // Armazena o nome da lei a ser excluída
+         });
+
+         // Função para confirmar a exclusão
+         $('#confirmDelete').on('click', function () {
+            $.ajax({
+               type: 'POST',
+               url: '/delete_lei',
+               contentType: 'application/json',
+               data: JSON.stringify({ name: lawToDelete }),
+               success: function () {
+                     location.reload(); // Recarrega a página após a exclusão
+               },
+               error: function (jqXHR) {
+                     alert('Erro ao excluir a lei: ' + jqXHR.responseText);
+               }
+            });
+         });
+
+         // Função para buscar leis
+         function searchLeis() {
+               const input = document.getElementById('searchInput');
+               const filter = input.value.toLowerCase();
+               const list = document.querySelector('.listaLeis');
+               const items = list.getElementsByTagName('li');
+
+               for (let i = 0; i < items.length; i++) {
+                  const lei = items[i];
+                  const name = lei.querySelector('.nome').textContent.toLowerCase();
+                  const date = lei.querySelector('.data').textContent.toLowerCase();
+                  
+                  if (name.includes(filter) || date.includes(filter)) {
+                     lei.style.display = '';
+                  } else {
+                     lei.style.display = 'none';
+                  }
+               }
+         }   
+              
+      </script>
+   </body>
+
+   </html>

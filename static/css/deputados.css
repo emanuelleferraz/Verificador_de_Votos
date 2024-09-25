@@ -1,23 +1,156 @@
+body{
+    background-color: darkgreen;
+}
 
-.tabela{
-    padding-top: 200px;
-    width: 80%;
+.container{
+    padding: 100px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-table{
-    margin-left: 280px;
-    border: 1px solid #ddd ;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    border-radius: 10px;
+.header{
+    margin-top: 30px;
 }
 
-th, td{
+#logout-button{
+    margin-top: -40px;
+}
+
+#areaTabela{
     background-color: #fff;
+    border-radius: 7px;
 }
 
-th {
+.d-flex{
+    padding-bottom: 10px;
+}
+
+.d-flex input{
+    border: 1px solid darkgreen;
+}
+
+.d-flex input:focus {
+    border: 1px solid darkgreen;
     color: darkgreen;
 }
+
+.box-area {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.form-control{
+    width: 1100px;
+}
+
+#titulo{
+    color: #0000;
+}
+
+.container-fluid{
+    border: 2px solid #0000;
+}
+
+.form-control{
+    padding-left: 3px;
+}
+
+.table-container {
+    max-height: 500px;
+    /* Ajuste a altura máxima conforme necessário */
+    overflow-y: auto;
+    /* Adiciona a barra de rolagem vertical */
+    border: 1px solid #fff !important;
+    /* Adiciona uma borda para a tabela */
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.search-container {
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Ajuste conforme necessário */
+  }
+
+#searchInput {
+    border: 2px solid #007bff;
+    /* Borda destacada */
+    border-radius: 25px;
+    /* Borda arredondada */
+    padding: 10px 20px;
+    /* Espaçamento interno */
+    font-size: 16px;
+    /* Tamanho da fonte */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra leve */
+    outline: none;
+    /* Remove o contorno padrão ao focar */
+}
+
+#searchInput:focus {
+    border-color: #0056b3;
+    /* Cor da borda ao focar */
+    box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.2);
+    /* Sombra ao focar */
+}
+
+.search-icon {
+    position: absolute;
+    right: 20px; /* Aumenta a distância da borda direita */
+    top: 45%; /* Move o ícone para cima */
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    color: #007bff; /* Cor do ícone */
+    font-size: 20px; /* Tamanho do ícone */
+  }
+
+
+.navbar-nav .nav-link {
+    text-decoration: underline;
+}
+
+.modal-dialog {
+    max-width: 500px; /* Ajuste a largura conforme necessário */
+    margin: 1.75rem auto; /* Margem para centralizar o modal na tela */
+}
+  
+.modal-body {
+    max-height: calc(100vh - 150px); /* Ajusta a altura do modal */
+    overflow-y: auto; /* Adiciona rolagem se o conteúdo for maior */
+}
+  
+#editName,
+#editParty {
+    width: 80%; /* Ajuste a largura conforme necessário */
+    height: 30px; /* Ajuste a altura conforme necessário */
+    font-size: 14px; /* Reduz o tamanho da fonte */
+}
+
+#name,
+#party,
+#record {
+    width: 80%; /* Ajuste a largura conforme necessário */
+    height: 30px; /* Ajuste a altura conforme necessário */
+    font-size: 14px; /* Reduz o tamanho da fonte */
+}
+
+#adicionarDep{
+    width: 175px;
+    height: 40px;
+}
+
+#salvar{
+    background-color: darkgreen;
+    border-color: darkgreen;
+    width: 165px;
+    height: 40px;
+}
+
+#adicionar{
+    background-color: darkgreen;
+    border-color: darkgreen;
+    width: 125px;
+    height: 40px;
+}
+

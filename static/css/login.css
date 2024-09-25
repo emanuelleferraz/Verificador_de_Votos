@@ -7,6 +7,10 @@ body {
     color: #023047
 }
 
+.header{
+    margin-top: 30px;
+}
+
 .page {
     display: flex;
     flex-direction: column;
@@ -80,6 +84,40 @@ body {
 .formLogin a:hover {
     color: darkgreen;
 }
+
+.vermelho{
+    font-size: 17px;
+    background-color: #cc0000;
+    color: #ffff;
+    line-height: 64px;
+    width: 80%;
+    max-width: 180px;
+    text-align: center;
+    display: inline-block;
+    transition: ease-in all 0.5s;
+    font-weight: bold;
+    border-radius: 0;
+    border: inherit;
+    height: 60px;
+    text-transform: uppercase;
+}
+
+.vermelho:hover {
+    transform: scale(1.05);
+    background-color: rgb(134, 25, 21);
+
+}
+
+/* .vermelho {
+    background-color: #FF0000 !important; 
+    color: white !important; 
+    border-color: #FF0000 !important; 
+}
+
+#vermelh:hover {
+    background-color: #cc0000 !important;
+    border-color: #cc0000 !important; 
+} */
 
 .btn {
     background-color: darkgreen;

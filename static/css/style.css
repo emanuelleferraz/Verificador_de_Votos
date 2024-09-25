@@ -130,6 +130,10 @@ ol {
      list-style: none;
 }
 
+.aboutTexto{
+     text-align: justify;
+}
+
 p {
      margin: 0px;
      font-weight: 400;
@@ -157,6 +161,22 @@ a,
 img {
      max-width: 100%;
      height: auto;
+}
+
+.imagemSlider{
+     max-width: 100%;
+     height: auto;
+     margin-left: 110px;
+}
+
+.imagemSlider3{
+     max-width: 90%;
+     height: auto;
+     margin-left: 130px;
+}
+
+.aboutTitulo{
+     margin-bottom: 12px;
 }
 
  :focus {
@@ -299,6 +319,29 @@ button {
      text-transform: uppercase;
 }
 
+.btn.btn-primary.logout{
+     font-size: 17px;
+     background-color: #cc0000;
+     color: #ffff;
+     line-height: 64px;
+     width: 80%;
+     max-width: 180px;
+     text-align: center;
+     display: inline-block;
+     transition: ease-in all 0.5s;
+     font-weight: bold;
+     border-radius: 0;
+     border: inherit;
+     height: 60px;
+     text-transform: uppercase;
+ }
+ 
+ .btn.btn-primary.logout:hover{
+     transform: scale(1.05);
+     background-color: rgb(141, 13, 9);
+ 
+ }
+
 .read_more:hover {
      background: #000000;
      color: #fff;
@@ -385,25 +428,26 @@ ul.infomaco li a {
 }
 
 .navigation.navbar-dark .navbar-nav .nav-link {
-     padding: 50px 23px 10px 23px;
+     padding: 10px 23px; /* Ajuste o padding conforme necessário */
      color: #fff;
      font-size: 14px;
      line-height: 15px;
      font-weight: bold;
      text-transform: uppercase;
-}
-
-.navigation.navbar-dark .navbar-nav .nav-link:focus,
-.navigation.navbar-dark .navbar-nav .nav-link:hover {
+     transition: background 0.3s ease; /* Adiciona uma transição suave */
+ }
+ 
+ .navigation.navbar-dark .navbar-nav .nav-link:hover {
      background: #f6f60b;
-}
-
-.navigation.navbar-dark .navbar-nav .active>.nav-link,
-.navigation.navbar-dark .navbar-nav .nav-link.active,
-.navigation.navbar-dark .navbar-nav .nav-link.show,
-.navigation.navbar-dark .navbar-nav .show>.nav-link {
-     background: #f6f60b;
-}
+     padding: 10px 23px; /* Ajuste o padding conforme necessário */
+ }
+ 
+ /* Opcional: Para adicionar um efeito de borda no hover */
+ .navigation.navbar-dark .navbar-nav .nav-link:hover {
+     border: 2px solid #f6f60b; /* Adiciona uma borda ao redor do link no hover */
+     border-radius: 5px; /* Arredonda os cantos da borda, se desejar */
+     padding: 8px 21px; /* Ajusta o padding para manter o tamanho do hover */
+ }
 
 .di_no {
      display: none;
@@ -1024,6 +1068,8 @@ ul.conta li a {
      text-transform: uppercase;
      line-height: 18px;
 }
+
+
 
 
 /** end blog **/
